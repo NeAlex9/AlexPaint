@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LineShapeLib;
 
 namespace AlexPaint
 {
@@ -15,6 +16,20 @@ namespace AlexPaint
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            MyLine myLine = new MyLine();
+            myLine.DrawLine(e);
+            MyRectangle myRec = new MyRectangle();
+            myRec.DrawRectangle(e);
+            MyEllipse myEllipse = new MyEllipse();
+            myEllipse.DrawEllipse(e);
+            MyPolygon myPoligon = new MyPolygon();
+            myPoligon.DrawPolygon(e);
+            MyPolyline myPolyline = new MyPolyline();
+            myPolyline.DrawPolyline(e);
         }
     }
 }
