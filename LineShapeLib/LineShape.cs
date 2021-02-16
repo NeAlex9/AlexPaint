@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
-//using System.Windows.Media;
-using Color = System.Drawing.Color;
-using Pen = System.Drawing.Pen;
+
 
 namespace LineShapeLib
 {

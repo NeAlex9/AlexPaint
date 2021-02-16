@@ -20,7 +20,7 @@ namespace AlexPaint
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            MyLine myLine = new MyLine();
+            MyLine myLine = new MyLine();            //Классы описаны в проекте LineShapelib
             myLine.DrawLine(e);
             MyRectangle myRec = new MyRectangle();
             myRec.DrawRectangle(e);
