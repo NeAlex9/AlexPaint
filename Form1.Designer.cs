@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 128);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(880, 507);
@@ -59,7 +59,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-
         }
 
         private System.Windows.Forms.Panel panel1;
