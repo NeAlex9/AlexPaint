@@ -37,44 +37,44 @@ namespace LineShapeLib
     }
     public class MyPolygon
     {
-        private int NumSides = 5;
-        private int R = 40;
-        private Point Center = new Point(400, 300);
-        private Point[] ArrPoints;
+        private int numSides = 5;
+        private int r = 40;
+        private Point center = new Point(400, 300);
+        private Point[] arrPoints;
         private void GetPointsForPolygon(double angle)
         {
             double j = 0;
-            for (int i = 0; i < NumSides + 1; i++)
+            for (int i = 0; i < numSides + 1; i++)
             {
-                ArrPoints[i].X = Center.X + (int) (Math.Round(Math.Cos(j / 180 * Math.PI) * R));
-                ArrPoints[i].Y = Center.Y - (int) (Math.Round(Math.Sin(j / 180 * Math.PI) * R));
+                arrPoints[i].X = center.X + (int) (Math.Round(Math.Cos(j / 180 * Math.PI) * r));
+                arrPoints[i].Y = center.Y - (int) (Math.Round(Math.Sin(j / 180 * Math.PI) * r));
                 j = j + angle;
             }
         }
         public void DrawPolygon(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            ArrPoints = new Point[NumSides + 1];
-            GetPointsForPolygon((double)(360.0 / (double)NumSides));
+            arrPoints = new Point[numSides + 1];
+            GetPointsForPolygon((360.0 / numSides));
             Pen myPen = new Pen(Color.Black);
-            g.DrawPolygon(myPen, ArrPoints);
+            g.DrawPolygon(myPen, arrPoints);
         }
         
     }
     public class MyPolyline
     {
-        private Point[] ArrPoints;
+        private Point[] arrPoints;
         private int NumPoints = 4;
         public void DrawPolyline(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Pen myPen = new Pen(Color.Black);
-            ArrPoints = new Point[NumPoints];
-            ArrPoints[0] = new Point(330, 44);
-            ArrPoints[1] = new Point(300, 110);
-            ArrPoints[2] = new Point(444, 80);
-            ArrPoints[3] = new Point(444, 160);
-            g.DrawLines(myPen, ArrPoints);
+            arrPoints = new Point[NumPoints];
+            arrPoints[0] = new Point(330, 44);
+            arrPoints[1] = new Point(300, 110);
+            arrPoints[2] = new Point(444, 80);
+            arrPoints[3] = new Point(444, 160);
+            g.DrawLines(myPen, arrPoints);
         }
     }
 }

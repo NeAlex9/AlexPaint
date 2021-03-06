@@ -6,6 +6,9 @@
 // using System.Linq;
 // using System.Text;
 // using System.Threading.Tasks;
+
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 using LineShapeLib;
 
@@ -30,6 +33,7 @@ namespace AlexPaint
             myPoligon.DrawPolygon(e);
             MyPolyline myPolyline = new MyPolyline();
             myPolyline.DrawPolyline(e);
+            colorDialog1.ShowDialog();
         }
     }
 }
