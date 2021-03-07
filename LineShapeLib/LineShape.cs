@@ -1,12 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Media.Converters;
 
 
-namespace LineShapeLib
+namespace LineShapeLib       //TODO классы для рисования фигур
 {
-    public class MyLine
+    
+    public abstract class Figure{
+        public Color color { get; set; }
+        public int width   { get; set; }
+        public Figure(Color color, int width)
+        {
+            this.color = color;
+            this.width = width;
+        }
+    } 
+    
+    public class MyLine : Figure
     {
+
+        public MyLine(Color color, int width) : base(color, width){}
         public void DrawLine(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -14,8 +28,10 @@ namespace LineShapeLib
             g.DrawLine(myPen, 500, 100, 600, 30);
         }
     }
-    public class MyRectangle
+    
+    public class MyRectangle : Figure
     {
+        public MyRectangle(Color color, int width) : base(color, width){}
         public void DrawRectangle(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -25,8 +41,11 @@ namespace LineShapeLib
         }
 
     }
-    public class MyEllipse
+    
+    public class MyEllipse : Figure
     {
+    
+        public MyEllipse(Color color, int width) : base(color, width){}
         public void DrawEllipse(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -35,12 +54,15 @@ namespace LineShapeLib
             g.DrawEllipse(myPen, myRec);
         }
     }
-    public class MyPolygon
+    
+    public class MyPolygon : Figure
     {
         private int numSides = 5;
         private int r = 40;
         private Point center = new Point(400, 300);
         private Point[] arrPoints;
+        
+        public MyPolygon(Color color, int width) : base(color, width){}
         private void GetPointsForPolygon(double angle)
         {
             double j = 0;
@@ -58,23 +80,6 @@ namespace LineShapeLib
             GetPointsForPolygon((360.0 / numSides));
             Pen myPen = new Pen(Color.Black);
             g.DrawPolygon(myPen, arrPoints);
-        }
-        
-    }
-    public class MyPolyline
-    {
-        private Point[] arrPoints;
-        private int NumPoints = 4;
-        public void DrawPolyline(PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            Pen myPen = new Pen(Color.Black);
-            arrPoints = new Point[NumPoints];
-            arrPoints[0] = new Point(330, 44);
-            arrPoints[1] = new Point(300, 110);
-            arrPoints[2] = new Point(444, 80);
-            arrPoints[3] = new Point(444, 160);
-            g.DrawLines(myPen, arrPoints);
         }
     }
 }

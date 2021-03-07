@@ -28,27 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.buttonRedo = new System.Windows.Forms.Button();
+            this.buttonUndo = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.LabelCurColor = new System.Windows.Forms.Label();
+            this.buttonPalette = new System.Windows.Forms.Button();
+            this.buttonBlack = new System.Windows.Forms.Button();
+            this.buttonBlue = new System.Windows.Forms.Button();
+            this.buttonYellow = new System.Windows.Forms.Button();
+            this.buttonRed = new System.Windows.Forms.Button();
+            this.buttonGreen = new System.Windows.Forms.Button();
+            this.buttonWhite = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.labelWidth = new System.Windows.Forms.Label();
+            this.trackBarWidth = new System.Windows.Forms.TrackBar();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.labelBrush = new System.Windows.Forms.Label();
+            this.buttonBrush = new System.Windows.Forms.Button();
             this.panelForFigures = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonPolyline = new System.Windows.Forms.Button();
+            this.buttonPolygon = new System.Windows.Forms.Button();
             this.buttonEllipse = new System.Windows.Forms.Button();
+            this.buttonTriangle = new System.Windows.Forms.Button();
             this.buttonLine = new System.Windows.Forms.Button();
             this.buttonRectangle = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -58,12 +63,13 @@
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.toolTipNumDeg = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipCurColor = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.trackBarWidth)).BeginInit();
             this.panel3.SuspendLayout();
             this.panelForFigures.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -73,8 +79,9 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel2.Controls.Add(this.button13);
-            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.numericUpDown1);
+            this.panel2.Controls.Add(this.buttonRedo);
+            this.panel2.Controls.Add(this.buttonUndo);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
@@ -85,218 +92,252 @@
             this.panel2.Size = new System.Drawing.Size(880, 98);
             this.panel2.TabIndex = 1;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.numericUpDown1.Location = new System.Drawing.Point(325, 7);
+            this.numericUpDown1.Minimum = new decimal(new int[] {5, 0, 0, 0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(60, 29);
+            this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.Value = new decimal(new int[] {5, 0, 0, 0});
+            // 
+            // buttonRedo
+            // 
+            this.buttonRedo.AllowDrop = true;
+            this.buttonRedo.BackColor = System.Drawing.Color.White;
+            this.buttonRedo.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonRedo.BackgroundImage")));
+            this.buttonRedo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRedo.Location = new System.Drawing.Point(91, 3);
+            this.buttonRedo.Name = "buttonRedo";
+            this.buttonRedo.Size = new System.Drawing.Size(36, 33);
+            this.buttonRedo.TabIndex = 14;
+            this.buttonRedo.UseVisualStyleBackColor = false;
+            // 
+            // buttonUndo
+            // 
+            this.buttonUndo.AllowDrop = true;
+            this.buttonUndo.BackColor = System.Drawing.Color.White;
+            this.buttonUndo.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonUndo.BackgroundImage")));
+            this.buttonUndo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUndo.Location = new System.Drawing.Point(49, 3);
+            this.buttonUndo.Name = "buttonUndo";
+            this.buttonUndo.Size = new System.Drawing.Size(36, 33);
+            this.buttonUndo.TabIndex = 11;
+            this.buttonUndo.UseVisualStyleBackColor = false;
+            // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.button12);
-            this.panel5.Controls.Add(this.button11);
-            this.panel5.Controls.Add(this.button9);
-            this.panel5.Controls.Add(this.button8);
-            this.panel5.Controls.Add(this.button10);
-            this.panel5.Controls.Add(this.button7);
-            this.panel5.Controls.Add(this.button5);
-            this.panel5.Location = new System.Drawing.Point(527, 0);
+            this.panel5.Controls.Add(this.LabelCurColor);
+            this.panel5.Controls.Add(this.buttonPalette);
+            this.panel5.Controls.Add(this.buttonBlack);
+            this.panel5.Controls.Add(this.buttonBlue);
+            this.panel5.Controls.Add(this.buttonYellow);
+            this.panel5.Controls.Add(this.buttonRed);
+            this.panel5.Controls.Add(this.buttonGreen);
+            this.panel5.Controls.Add(this.buttonWhite);
+            this.panel5.Location = new System.Drawing.Point(613, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(185, 72);
+            this.panel5.Size = new System.Drawing.Size(237, 72);
             this.panel5.TabIndex = 13;
             // 
-            // button12
+            // LabelCurColor
             // 
-            this.button12.AllowDrop = true;
-            this.button12.BackColor = System.Drawing.Color.Snow;
-            this.button12.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("button12.BackgroundImage")));
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(117, 3);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(68, 66);
-            this.button12.TabIndex = 19;
-            this.button12.UseVisualStyleBackColor = false;
+            this.LabelCurColor.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (192)))), ((int) (((byte) (192)))));
+            this.LabelCurColor.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.LabelCurColor.Location = new System.Drawing.Point(122, 19);
+            this.LabelCurColor.Name = "LabelCurColor";
+            this.LabelCurColor.Size = new System.Drawing.Size(36, 36);
+            this.LabelCurColor.TabIndex = 12;
+            this.LabelCurColor.MouseHover += new System.EventHandler(this.LabelCurColor_MouseHover);
             // 
-            // button11
+            // buttonPalette
             // 
-            this.button11.AllowDrop = true;
-            this.button11.BackColor = System.Drawing.Color.Black;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(79, 37);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(36, 32);
-            this.button11.TabIndex = 18;
-            this.button11.UseVisualStyleBackColor = false;
+            this.buttonPalette.AllowDrop = true;
+            this.buttonPalette.BackColor = System.Drawing.Color.Snow;
+            this.buttonPalette.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonPalette.BackgroundImage")));
+            this.buttonPalette.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonPalette.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPalette.Location = new System.Drawing.Point(164, 3);
+            this.buttonPalette.Name = "buttonPalette";
+            this.buttonPalette.Size = new System.Drawing.Size(68, 66);
+            this.buttonPalette.TabIndex = 19;
+            this.buttonPalette.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // buttonBlack
             // 
-            this.button9.AllowDrop = true;
-            this.button9.BackColor = System.Drawing.Color.Blue;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(41, 37);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(36, 32);
-            this.button9.TabIndex = 15;
-            this.button9.UseVisualStyleBackColor = false;
+            this.buttonBlack.AllowDrop = true;
+            this.buttonBlack.BackColor = System.Drawing.Color.Black;
+            this.buttonBlack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonBlack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBlack.Location = new System.Drawing.Point(80, 37);
+            this.buttonBlack.Name = "buttonBlack";
+            this.buttonBlack.Size = new System.Drawing.Size(36, 32);
+            this.buttonBlack.TabIndex = 18;
+            this.buttonBlack.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // buttonBlue
             // 
-            this.button8.AllowDrop = true;
-            this.button8.BackColor = System.Drawing.Color.Yellow;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(79, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(36, 32);
-            this.button8.TabIndex = 14;
-            this.button8.UseVisualStyleBackColor = false;
+            this.buttonBlue.AllowDrop = true;
+            this.buttonBlue.BackColor = System.Drawing.Color.Blue;
+            this.buttonBlue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonBlue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBlue.Location = new System.Drawing.Point(41, 37);
+            this.buttonBlue.Name = "buttonBlue";
+            this.buttonBlue.Size = new System.Drawing.Size(36, 32);
+            this.buttonBlue.TabIndex = 15;
+            this.buttonBlue.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // buttonYellow
             // 
-            this.button10.AllowDrop = true;
-            this.button10.BackColor = System.Drawing.Color.Red;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(41, 3);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(36, 32);
-            this.button10.TabIndex = 16;
-            this.button10.UseVisualStyleBackColor = false;
+            this.buttonYellow.AllowDrop = true;
+            this.buttonYellow.BackColor = System.Drawing.Color.Yellow;
+            this.buttonYellow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonYellow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonYellow.Location = new System.Drawing.Point(80, 3);
+            this.buttonYellow.Name = "buttonYellow";
+            this.buttonYellow.Size = new System.Drawing.Size(36, 32);
+            this.buttonYellow.TabIndex = 14;
+            this.buttonYellow.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // buttonRed
             // 
-            this.button7.AllowDrop = true;
-            this.button7.BackColor = System.Drawing.Color.Lime;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(3, 37);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(36, 32);
-            this.button7.TabIndex = 13;
-            this.button7.UseVisualStyleBackColor = false;
+            this.buttonRed.AllowDrop = true;
+            this.buttonRed.BackColor = System.Drawing.Color.Red;
+            this.buttonRed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRed.Location = new System.Drawing.Point(41, 3);
+            this.buttonRed.Name = "buttonRed";
+            this.buttonRed.Size = new System.Drawing.Size(36, 32);
+            this.buttonRed.TabIndex = 16;
+            this.buttonRed.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // buttonGreen
             // 
-            this.button5.AllowDrop = true;
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(3, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(36, 32);
-            this.button5.TabIndex = 11;
-            this.button5.UseVisualStyleBackColor = false;
+            this.buttonGreen.AllowDrop = true;
+            this.buttonGreen.BackColor = System.Drawing.Color.Lime;
+            this.buttonGreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonGreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGreen.Location = new System.Drawing.Point(3, 37);
+            this.buttonGreen.Name = "buttonGreen";
+            this.buttonGreen.Size = new System.Drawing.Size(36, 32);
+            this.buttonGreen.TabIndex = 13;
+            this.buttonGreen.UseVisualStyleBackColor = false;
+            // 
+            // buttonWhite
+            // 
+            this.buttonWhite.AllowDrop = true;
+            this.buttonWhite.BackColor = System.Drawing.Color.White;
+            this.buttonWhite.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWhite.Location = new System.Drawing.Point(3, 3);
+            this.buttonWhite.Name = "buttonWhite";
+            this.buttonWhite.Size = new System.Drawing.Size(36, 32);
+            this.buttonWhite.TabIndex = 11;
+            this.buttonWhite.UseVisualStyleBackColor = false;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.trackBar1);
-            this.panel4.Location = new System.Drawing.Point(322, 3);
+            this.panel4.Controls.Add(this.labelWidth);
+            this.panel4.Controls.Add(this.trackBarWidth);
+            this.panel4.Location = new System.Drawing.Point(408, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(202, 72);
             this.panel4.TabIndex = 1;
             // 
-            // label2
+            // labelWidth
             // 
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label2.Location = new System.Drawing.Point(0, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 24);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "выбор толщины";
+            this.labelWidth.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.labelWidth.Location = new System.Drawing.Point(0, 48);
+            this.labelWidth.Name = "labelWidth";
+            this.labelWidth.Size = new System.Drawing.Size(199, 24);
+            this.labelWidth.TabIndex = 12;
+            this.labelWidth.Text = "выбор толщины";
             // 
-            // trackBar1
+            // trackBarWidth
             // 
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.Location = new System.Drawing.Point(0, 9);
-            this.trackBar1.Maximum = 20;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(199, 36);
-            this.trackBar1.TabIndex = 0;
-            this.trackBar1.Value = 1;
+            this.trackBarWidth.AutoSize = false;
+            this.trackBarWidth.Location = new System.Drawing.Point(0, 9);
+            this.trackBarWidth.Maximum = 20;
+            this.trackBarWidth.Minimum = 1;
+            this.trackBarWidth.Name = "trackBarWidth";
+            this.trackBarWidth.Size = new System.Drawing.Size(199, 36);
+            this.trackBarWidth.TabIndex = 0;
+            this.trackBarWidth.Value = 1;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.labelBrush);
+            this.panel3.Controls.Add(this.buttonBrush);
             this.panel3.Location = new System.Drawing.Point(138, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(57, 76);
             this.panel3.TabIndex = 0;
             // 
-            // label1
+            // labelBrush
             // 
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label1.Location = new System.Drawing.Point(0, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "кисть";
+            this.labelBrush.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.labelBrush.Location = new System.Drawing.Point(0, 52);
+            this.labelBrush.Name = "labelBrush";
+            this.labelBrush.Size = new System.Drawing.Size(57, 24);
+            this.labelBrush.TabIndex = 1;
+            this.labelBrush.Text = "кисть";
             // 
-            // button4
+            // buttonBrush
             // 
-            this.button4.AllowDrop = true;
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(57, 49);
-            this.button4.TabIndex = 11;
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonBrush.AllowDrop = true;
+            this.buttonBrush.BackColor = System.Drawing.Color.White;
+            this.buttonBrush.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonBrush.BackgroundImage")));
+            this.buttonBrush.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonBrush.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBrush.Location = new System.Drawing.Point(0, 0);
+            this.buttonBrush.Name = "buttonBrush";
+            this.buttonBrush.Size = new System.Drawing.Size(57, 49);
+            this.buttonBrush.TabIndex = 11;
+            this.buttonBrush.UseVisualStyleBackColor = false;
             // 
             // panelForFigures
             // 
             this.panelForFigures.BackColor = System.Drawing.Color.White;
-            this.panelForFigures.Controls.Add(this.button3);
-            this.panelForFigures.Controls.Add(this.button2);
-            this.panelForFigures.Controls.Add(this.button1);
+            this.panelForFigures.Controls.Add(this.buttonPolyline);
+            this.panelForFigures.Controls.Add(this.buttonPolygon);
             this.panelForFigures.Controls.Add(this.buttonEllipse);
+            this.panelForFigures.Controls.Add(this.buttonTriangle);
             this.panelForFigures.Controls.Add(this.buttonLine);
             this.panelForFigures.Controls.Add(this.buttonRectangle);
             this.panelForFigures.Location = new System.Drawing.Point(198, 3);
             this.panelForFigures.Name = "panelForFigures";
             this.panelForFigures.Padding = new System.Windows.Forms.Padding(9);
-            this.panelForFigures.Size = new System.Drawing.Size(118, 75);
+            this.panelForFigures.Size = new System.Drawing.Size(121, 75);
             this.panelForFigures.TabIndex = 0;
             // 
-            // button3
+            // buttonPolyline
             // 
-            this.button3.AllowDrop = true;
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(79, 39);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(36, 33);
-            this.button3.TabIndex = 10;
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonPolyline.AllowDrop = true;
+            this.buttonPolyline.BackColor = System.Drawing.Color.White;
+            this.buttonPolyline.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonPolyline.BackgroundImage")));
+            this.buttonPolyline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonPolyline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPolyline.Location = new System.Drawing.Point(80, 39);
+            this.buttonPolyline.Name = "buttonPolyline";
+            this.buttonPolyline.Size = new System.Drawing.Size(36, 33);
+            this.buttonPolyline.TabIndex = 9;
+            this.buttonPolyline.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // buttonPolygon
             // 
-            this.button2.AllowDrop = true;
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(79, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(36, 33);
-            this.button2.TabIndex = 9;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.AllowDrop = true;
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(41, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 33);
-            this.button1.TabIndex = 8;
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonPolygon.AllowDrop = true;
+            this.buttonPolygon.BackColor = System.Drawing.Color.White;
+            this.buttonPolygon.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonPolygon.BackgroundImage")));
+            this.buttonPolygon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonPolygon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPolygon.Location = new System.Drawing.Point(80, 3);
+            this.buttonPolygon.Name = "buttonPolygon";
+            this.buttonPolygon.Size = new System.Drawing.Size(36, 33);
+            this.buttonPolygon.TabIndex = 8;
+            this.buttonPolygon.UseVisualStyleBackColor = false;
             // 
             // buttonEllipse
             // 
@@ -310,6 +351,19 @@
             this.buttonEllipse.Size = new System.Drawing.Size(36, 33);
             this.buttonEllipse.TabIndex = 7;
             this.buttonEllipse.UseVisualStyleBackColor = false;
+            // 
+            // buttonTriangle
+            // 
+            this.buttonTriangle.AllowDrop = true;
+            this.buttonTriangle.BackColor = System.Drawing.Color.White;
+            this.buttonTriangle.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonTriangle.BackgroundImage")));
+            this.buttonTriangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonTriangle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTriangle.Location = new System.Drawing.Point(41, 39);
+            this.buttonTriangle.Name = "buttonTriangle";
+            this.buttonTriangle.Size = new System.Drawing.Size(36, 33);
+            this.buttonTriangle.TabIndex = 10;
+            this.buttonTriangle.UseVisualStyleBackColor = false;
             // 
             // buttonLine
             // 
@@ -345,6 +399,7 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Enabled = false;
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(0, 126);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
@@ -374,18 +429,21 @@
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
             this.открытьToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
             this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -393,31 +451,15 @@
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
-            // button6
+            // toolTipNumDeg
             // 
-            this.button6.AllowDrop = true;
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(49, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(36, 33);
-            this.button6.TabIndex = 11;
-            this.button6.UseVisualStyleBackColor = false;
+            this.toolTipNumDeg.BackColor = System.Drawing.Color.White;
+            this.toolTipNumDeg.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             // 
-            // button13
+            // toolTipCurColor
             // 
-            this.button13.AllowDrop = true;
-            this.button13.BackColor = System.Drawing.Color.White;
-            this.button13.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("button13.BackgroundImage")));
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(91, 3);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(36, 33);
-            this.button13.TabIndex = 14;
-            this.button13.UseVisualStyleBackColor = false;
+            this.toolTipCurColor.BackColor = System.Drawing.Color.White;
+            this.toolTipCurColor.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             // 
             // Form1
             // 
@@ -431,10 +473,12 @@
             this.Location = new System.Drawing.Point(15, 15);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.trackBarWidth)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panelForFigures.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -443,8 +487,16 @@
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label LabelCurColor;
+
+        private System.Windows.Forms.ToolTip toolTipCurColor;
+
+        private System.Windows.Forms.ToolTip toolTipNumDeg;
+
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+
+        private System.Windows.Forms.Button buttonRedo;
+        private System.Windows.Forms.Button buttonUndo;
 
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
 
@@ -457,30 +509,30 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
 
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button buttonBlack;
+        private System.Windows.Forms.Button buttonPalette;
 
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button buttonRed;
 
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button buttonYellow;
+        private System.Windows.Forms.Button buttonBlue;
 
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button buttonWhite;
+        private System.Windows.Forms.Button buttonGreen;
         private System.Windows.Forms.Panel panel5;
 
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelWidth;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBarWidth;
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelBrush;
         private System.Windows.Forms.Panel panel3;
 
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonBrush;
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonPolygon;
+        private System.Windows.Forms.Button buttonPolyline;
+        private System.Windows.Forms.Button buttonTriangle;
 
         private System.Windows.Forms.Button buttonEllipse;
 
