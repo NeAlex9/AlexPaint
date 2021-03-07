@@ -33,7 +33,7 @@ namespace AlexPaint
             myPoligon.DrawPolygon(e);
             MyPolyline myPolyline = new MyPolyline();
             myPolyline.DrawPolyline(e);
-            colorDialog1.ShowDialog();
+           
         }
     }
 }
