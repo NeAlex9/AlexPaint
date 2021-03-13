@@ -25,14 +25,7 @@ namespace AlexPaint
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            /*MyLine myLine = new MyLine();            //Классы описаны в проекте LineShapelib
-            myLine.DrawLine(e);
-            MyRectangle myRec = new MyRectangle();
-            myRec.DrawRectangle(e);
-            MyEllipse myEllipse = new MyEllipse();
-            myEllipse.DrawEllipse(e);
-            MyPolygon myPoligon = new MyPolygon();
-            myPoligon.DrawPolygon(e);*/
+            
         }     
 
         private void LabelCurColor_MouseHover(object sender, EventArgs e)

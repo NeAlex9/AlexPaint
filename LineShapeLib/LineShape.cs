@@ -10,6 +10,10 @@ namespace LineShapeLib       //TODO классы для рисования фи�
     public abstract class Figure{
         public Color color { get; set; }
         public int width   { get; set; }
+
+        public int x { get; set; }
+        public int y { get; set; }
+
         public Figure(Color color, int width)
         {
             this.color = color;
@@ -59,17 +63,18 @@ namespace LineShapeLib       //TODO классы для рисования фи�
     {
         private int numSides = 5;
         private int r = 40;
-        private Point center = new Point(400, 300);
+        /*private Point center = new Point(400, 300);*/
+        
         private Point[] arrPoints;
         
         public MyPolygon(Color color, int width) : base(color, width){}
-        private void GetPointsForPolygon(double angle)
+        private void GetPointsForRegularPolygon(double angle)
         {
             double j = 0;
             for (int i = 0; i < numSides + 1; i++)
             {
-                arrPoints[i].X = center.X + (int) (Math.Round(Math.Cos(j / 180 * Math.PI) * r));
-                arrPoints[i].Y = center.Y - (int) (Math.Round(Math.Sin(j / 180 * Math.PI) * r));
+                arrPoints[i].X = x + (int) (Math.Round(Math.Cos(j / 180 * Math.PI) * r));
+                arrPoints[i].Y = y - (int) (Math.Round(Math.Sin(j / 180 * Math.PI) * r));
                 j = j + angle;
             }
         }
@@ -77,7 +82,7 @@ namespace LineShapeLib       //TODO классы для рисования фи�
         {
             Graphics g = e.Graphics;
             arrPoints = new Point[numSides + 1];
-            GetPointsForPolygon((360.0 / numSides));
+            GetPointsForRegularPolygon((360.0 / numSides));
             Pen myPen = new Pen(Color.Black);
             g.DrawPolygon(myPen, arrPoints);
         }
