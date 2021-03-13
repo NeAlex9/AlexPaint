@@ -4,7 +4,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{E59B147B-B020-4331-A59D-8CF6F6D51B3A}</ProjectGuid>
+        <ProjectGuid>{D0DA3DF5-31D1-4ED0-A9EA-7E5623EA1C8C}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>BaseFigure</RootNamespace>
@@ -36,7 +36,6 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
-        <Reference Include="System.Drawing.Design" />
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
     </ItemGroup>

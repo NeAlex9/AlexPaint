@@ -79,11 +79,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="LineShapeLib\LineShapeLib.csproj">
-      <Project>{ec89229e-edab-4642-8757-a7fd505a53ab}</Project>
-      <Name>LineShapeLib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

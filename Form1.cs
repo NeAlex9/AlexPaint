@@ -8,9 +8,7 @@
 // using System.Threading.Tasks;
 
 using System;
-using System.Drawing;
 using System.Windows.Forms;
-using LineShapeLib;
 
 namespace AlexPaint
 {
@@ -33,19 +31,19 @@ namespace AlexPaint
             toolTipCurColor.SetToolTip(LabelCurColor, "Ваш цвет");    
         }
 
-        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
         }
 
-        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+            
         }
     }
 }
