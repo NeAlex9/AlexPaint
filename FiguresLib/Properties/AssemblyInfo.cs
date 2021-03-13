@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Polygon")]
+[assembly: AssemblyTitle("FiguresLib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Polygon")]
+[assembly: AssemblyProduct("FiguresLib")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("24BDC1B1-43F2-4CC1-AD44-04AB072A3872")]
+[assembly: Guid("ADD94AF2-4F13-4D8E-B08B-C76904738CA9")]
 
 // Version information for an assembly consists of the following four values:
 //

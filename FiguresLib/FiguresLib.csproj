@@ -4,11 +4,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{5DAA9BF5-C45E-440C-A5A4-E96D85526F60}</ProjectGuid>
+        <ProjectGuid>{ADD94AF2-4F13-4D8E-B08B-C76904738CA9}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Line</RootNamespace>
-        <AssemblyName>Line</AssemblyName>
+        <RootNamespace>FiguresLib</RootNamespace>
+        <AssemblyName>FiguresLib</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -40,11 +40,17 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Figures\Ellipse.cs" />
+        <Compile Include="Figures\Line.cs" />
+        <Compile Include="Figures\Polygon.cs" />
+        <Compile Include="Figures\Polyline.cs" />
+        <Compile Include="Figures\Rectangle.cs" />
+        <Compile Include="Figures\Triangle.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\BaseFigure\BaseFigure.csproj">
-        <Project>{e59b147b-b020-4331-a59d-8cf6f6d51b3a}</Project>
+        <Project>{d0da3df5-31d1-4ed0-a9ea-7e5623ea1c8c}</Project>
         <Name>BaseFigure</Name>
       </ProjectReference>
     </ItemGroup>
