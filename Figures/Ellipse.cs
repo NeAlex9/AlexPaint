@@ -2,15 +2,15 @@
 using System.Windows.Forms;
 using BaseFigure;
 
-namespace Ellipse
+namespace AlexPaint
 {
     public class Ellipse : Figure
     {
-        public Ellipse(Color color, int width) : base(color, width)
+        public Ellipse()
         {
         }
 
-        public override void Draw(PaintEventArgs e)
+        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart)
         {
             /*Graphics g = e.Graphics;
             Pen myPen = new Pen(Color.Black);
@@ -18,7 +18,12 @@ namespace Ellipse
             g.DrawEllipse(myPen, myRec);*/
         }
         
-        public override void Clear(PaintEventArgs e)
+        public override void OnMouseDownClick(int xClick, int yClick)
+        {
+            
+        }
+        
+        public override void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xClick, int yClick)
         {
             
         }

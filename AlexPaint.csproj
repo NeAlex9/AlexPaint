@@ -46,12 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Figures\Brush.cs" />
+    <Compile Include="Figures\Ellipse.cs" />
+    <Compile Include="Figures\Line.cs" />
+    <Compile Include="Figures\Polygon.cs" />
+    <Compile Include="Figures\Polyline.cs" />
+    <Compile Include="Figures\Rectangle.cs" />
+    <Compile Include="Figures\Triangle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Paint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -78,6 +86,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="BaseFigure\BaseFigure.csproj">
+      <Project>{d0da3df5-31d1-4ed0-a9ea-7e5623ea1c8c}</Project>
+      <Name>BaseFigure</Name>
+    </ProjectReference>
+    <ProjectReference Include="FiguresLib\FiguresLib.csproj">
+      <Project>{add94af2-4f13-4d8e-b08b-c76904738ca9}</Project>
+      <Name>FiguresLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

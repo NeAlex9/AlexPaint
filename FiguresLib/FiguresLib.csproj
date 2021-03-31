@@ -40,12 +40,6 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Figures\Ellipse.cs" />
-        <Compile Include="Figures\Line.cs" />
-        <Compile Include="Figures\Polygon.cs" />
-        <Compile Include="Figures\Polyline.cs" />
-        <Compile Include="Figures\Rectangle.cs" />
-        <Compile Include="Figures\Triangle.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

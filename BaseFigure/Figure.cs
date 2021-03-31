@@ -5,16 +5,19 @@ namespace BaseFigure
 {
     public abstract class Figure
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public Color Color { get; set; }
-        public int Width { get; set; }
-        public Figure(Color color, int width)
+        public int xStart { get; set; }
+        public int yStart { get; set; }
+        
+        private Pen myPen;
+        public Figure()
         {
-            this.Color = color;
-            this.Width = width;
-        } 
-        public abstract void Draw(PaintEventArgs e);
-        public abstract void Clear(PaintEventArgs e);
+            
+        }
+
+        public abstract void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart);
+
+        public abstract void OnMouseDownClick(int xClick, int yClick);
+
+        public abstract void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xClick, int yClick);
     }
 }

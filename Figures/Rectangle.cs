@@ -2,15 +2,15 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Rectangle
+namespace AlexPaint
 {
     public class Rectangle : Figure 
     {
-        public Rectangle(Color color, int width) : base(color, width)
+        public Rectangle()
         {
         }
         
-        public override void Draw(PaintEventArgs e)
+        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart)
         {
             /*Graphics g = e.Graphics;
             Pen myPen = new Pen(Color.Black);
@@ -18,7 +18,12 @@ namespace Rectangle
             g.DrawRectangle(myPen, myRec);*/
         }
         
-        public override void Clear(PaintEventArgs e)
+        public override void OnMouseDownClick(int xClick, int yClick)
+        {
+            
+        }
+        
+        public override void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xClick, int yClick)
         {
             
         }
