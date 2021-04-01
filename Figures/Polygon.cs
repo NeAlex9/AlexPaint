@@ -15,39 +15,56 @@ namespace AlexPaint
             Points = new List<Point>();
         }
         
-        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart)
+        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClock, int yPrevClock)
         {
             int len = Points.Count;
-            if (len > 1)
-            {
-                g.DrawLine(myPen, Points[len - 2], Points[len - 1]);    
-            }   
+            g.DrawLine(myPen, xPrevClock, yPrevClock, e.X, e.Y);
         }
         
         public override void OnMouseDownClick(int xClick, int yClick)
         {
-            Points.Add(new Point(xClick, yClick));
+            if (Points.Count < 1)
+            {
+                Points.Add(new Point(xClick, yClick));
+                xStart = xClick;
+                yStart = yClick;
+            }
+            
         }
         
-        public override void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xClick, int yClick)
+        public override void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
         {
-            int len = Points.Count, round = 20;
             
-            if ((Points[0].X - round < Points[len - 1].X && Points[0].X + round > Points[len - 1].X) &&
-                (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y) &&
-                (len > 1))
+            Points.Add(new Point(e.X, e.Y));
+            
+            int len = Points.Count, round = 20;
+            if (len > 1)
             {
-                Points[len - 1] = Points[0];
-                Draw(g, e, myPen, xClick, yClick);
-                Points.Clear();
-                return;
+                if ((Points[0].X - round < Points[len - 1].X && Points[0].X + round > Points[len - 1].X) &&
+                                (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y))
+                {
+
+                    Points[len - 1] = Points[0];
+                    g.DrawLine(myPen, xPrevClick, yPrevClick, Points[0].X, Points[0].Y);
+                    SolidBrush myBrush = new SolidBrush(Color.White);
+                    g.FillPolygon(myBrush, Points.ToArray());             // fill figure using white color
+                    for (int i = 0; i < Points.Count - 1; i++)
+                    {
+                        g.DrawLine(myPen, Points[i], Points[i + 1]);      // repeat draw 
+                    }
+                    Points.Clear();
+                    return;
+                }
+                
+                g.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
             }
-            Draw(g, e, myPen, xClick, yClick);
+            xStart = e.X;
+            yStart = e.Y;
         }
     }
 }
 
-/* TODO ПравильныйМногоугольник
+/* TODO Правильный Многоугольник
  private void GetPointsForRegularPolygon(double angle)
 {
     double j = 0;

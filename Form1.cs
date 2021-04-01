@@ -100,7 +100,7 @@ namespace AlexPaint
 
         private void DrawPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            Graphics g = Graphics.FromImage(myPaint.MainCanvas); 
+            Graphics g = Graphics.FromImage(myPaint.MainCanvas);
             myPaint.CurrentFigure.OnMouseUpClick(g, e, myPaint.MyPen, myPaint.CurrentFigure.xStart, myPaint.CurrentFigure.yStart);
             DrawPanel.Image = myPaint.MainCanvas;
         }

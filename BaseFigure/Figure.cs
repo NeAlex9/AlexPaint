@@ -18,6 +18,6 @@ namespace BaseFigure
 
         public abstract void OnMouseDownClick(int xClick, int yClick);
 
-        public abstract void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xClick, int yClick);
+        public abstract void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick);
     }
 }
