@@ -14,50 +14,61 @@ namespace AlexPaint
         {
             Points = new List<Point>();
         }
-        
-        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClock, int yPrevClock)
+
+        private void FillAndRecoverFigure(Graphics g, MouseEventArgs e, Pen myPen)
         {
-            int len = Points.Count;
-            g.DrawLine(myPen, xPrevClock, yPrevClock, e.X, e.Y);
+            SolidBrush myBrush = new SolidBrush(Color.White);
+            List<Point> tempList = new List<Point>();
+            foreach (var item in Points)
+            {
+                tempList.Add(item);
+            }
+            tempList.Add(new Point(e.X, e.Y));
+            g.FillPolygon(myBrush, tempList.ToArray());
+            for (int i = 0; i < Points.Count - 1; i++)
+            {
+                g.DrawLine(myPen, Points[i], Points[i + 1]);
+            }
         }
         
-        public override void OnMouseDownClick(int xClick, int yClick)
+        public override void OnMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
         {
             if (Points.Count < 1)
             {
+                CanvasWithOriginalFigure = originalCanvas;
                 Points.Add(new Point(xClick, yClick));
                 xStart = xClick;
                 yStart = yClick;
             }
-            
         }
-        
-        public override void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+
+        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClock, int yPrevClock)
         {
-            
+            int len = Points.Count;
+            FillAndRecoverFigure(g, e, myPen);
+            g.DrawLine(myPen, xPrevClock, yPrevClock, e.X, e.Y);
+
+        }
+
+        public override void OnMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+        {
             Points.Add(new Point(e.X, e.Y));
-            
             int len = Points.Count, round = 20;
             if (len > 1)
             {
                 if ((Points[0].X - round < Points[len - 1].X && Points[0].X + round > Points[len - 1].X) &&
                                 (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y))
                 {
-
                     Points[len - 1] = Points[0];
-                    g.DrawLine(myPen, xPrevClick, yPrevClick, Points[0].X, Points[0].Y);
-                    SolidBrush myBrush = new SolidBrush(Color.White);
-                    g.FillPolygon(myBrush, Points.ToArray());             // fill figure using white color
-                    for (int i = 0; i < Points.Count - 1; i++)
-                    {
-                        g.DrawLine(myPen, Points[i], Points[i + 1]);      // repeat draw 
-                    }
+                    FillAndRecoverFigure(g, e, myPen);
+                    g1 = g; 
                     Points.Clear();
                     return;
                 }
-                
                 g.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
             }
+            FillAndRecoverFigure(g, e, myPen);
+            g1.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
             xStart = e.X;
             yStart = e.Y;
         }

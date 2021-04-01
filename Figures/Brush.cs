@@ -11,12 +11,12 @@ namespace AlexPaint
             
         }
         
-        public override void OnMouseDownClick(int xClick, int yClick)
+        public override void OnMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
         {
             
         }
         
-        public override void OnMouseUpClick(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+        public override void OnMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
         {
             
         }

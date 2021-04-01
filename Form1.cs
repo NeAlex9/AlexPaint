@@ -82,7 +82,7 @@ namespace AlexPaint
 
         private void DrawPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            myPaint.CurrentFigure.OnMouseDownClick(e.X, e.Y);
+            myPaint.CurrentFigure.OnMouseDownClick(e.X, e.Y, myPaint.MainCanvas);
         }
         
         private void DrawPanel_MouseMove(object sender, MouseEventArgs e)
@@ -91,7 +91,7 @@ namespace AlexPaint
             {
                 Graphics g = Graphics.FromImage(myPaint.HelperCanvas);
                 g.Clear(Color.White);
-                g.DrawImage(myPaint.MainCanvas, 0, 0);
+                g.DrawImage(myPaint.CurrentFigure.CanvasWithOriginalFigure, 0, 0);
                 myPaint.CurrentFigure.Draw(g, e, myPaint.MyPen, myPaint.CurrentFigure.xStart, myPaint.CurrentFigure.yStart);
                 DrawPanel.Image = myPaint.HelperCanvas;
                 DrawPanel.Refresh();
@@ -100,8 +100,10 @@ namespace AlexPaint
 
         private void DrawPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            Graphics g = Graphics.FromImage(myPaint.MainCanvas);
-            myPaint.CurrentFigure.OnMouseUpClick(g, e, myPaint.MyPen, myPaint.CurrentFigure.xStart, myPaint.CurrentFigure.yStart);
+            myPaint.MainCanvas = (Bitmap)myPaint.CurrentFigure.CanvasWithOriginalFigure.Clone();
+           
+            Graphics g = Graphics.FromImage(myPaint.MainCanvas);  //!!!!!!!1
+            myPaint.CurrentFigure.OnMouseUpClick(g, Graphics.FromImage(myPaint.CurrentFigure.CanvasWithOriginalFigure), e, myPaint.MyPen, myPaint.CurrentFigure.xStart, myPaint.CurrentFigure.yStart);
             DrawPanel.Image = myPaint.MainCanvas;
         }
 
