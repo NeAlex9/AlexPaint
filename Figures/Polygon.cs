@@ -30,8 +30,8 @@ namespace AlexPaint
                 g.DrawLine(myPen, Points[i], Points[i + 1]);
             }
         }
-        
-        public override void OnMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
+
+        public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
         {
             if (Points.Count < 1)
             {
@@ -47,10 +47,9 @@ namespace AlexPaint
             int len = Points.Count;
             FillAndRecoverFigure(g, e, myPen);
             g.DrawLine(myPen, xPrevClock, yPrevClock, e.X, e.Y);
-
         }
 
-        public override void OnMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+        public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
         {
             Points.Add(new Point(e.X, e.Y));
             int len = Points.Count, round = 20;
@@ -60,9 +59,7 @@ namespace AlexPaint
                                 (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y))
                 {
                     Points[len - 1] = Points[0];
-                    FillAndRecoverFigure(g, e, myPen);
-                    g1 = g; 
-                    Points.Clear();
+                    FinishPainting(g, g1, e, myPen);
                     return;
                 }
                 g.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
@@ -71,6 +68,23 @@ namespace AlexPaint
             g1.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
             xStart = e.X;
             yStart = e.Y;
+        }
+
+        public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        {
+            if (Points.Count > 1)
+            {
+                Points.Add(new Point(Points[0].X, Points[0].Y));
+                FinishPainting(g, g1, e, myPen);
+            }
+            
+        }
+
+        public override void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        {
+            FillAndRecoverFigure(g, e, myPen);
+            g1 = g;
+            Points.Clear();
         }
     }
 }

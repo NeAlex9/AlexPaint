@@ -15,17 +15,27 @@ namespace AlexPaint
             g.DrawLine(myPen, xStart, yStart , e.X, e.Y);
         }
 
-        public override void OnMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
+        public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
         {
             xStart = xClick;
             yStart = yClick;
             CanvasWithOriginalFigure = originalCanvas;
         }
 
-        public override void OnMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+        public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
         {
             g.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
             g1.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
+        }
+
+        public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        {
+            
+        }
+
+        public override void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        {
+
         }
     }
 }

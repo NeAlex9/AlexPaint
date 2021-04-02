@@ -66,14 +66,14 @@
             this.toolTipCurColor = new System.Windows.Forms.ToolTip(this.components);
             this.DrawPanel = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.trackBarLineWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).BeginInit();
             this.panel3.SuspendLayout();
             this.panelForFigures.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.DrawPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrawPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -95,20 +95,28 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.numericUpDown1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numericUpDown1.Location = new System.Drawing.Point(325, 7);
-            this.numericUpDown1.Minimum = new decimal(new int[] {5, 0, 0, 0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(60, 29);
             this.numericUpDown1.TabIndex = 0;
             this.toolTipNumDeg.SetToolTip(this.numericUpDown1, "количество углов в многоугольнике");
-            this.numericUpDown1.Value = new decimal(new int[] {5, 0, 0, 0});
+            this.numericUpDown1.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // buttonRedo
             // 
             this.buttonRedo.AllowDrop = true;
             this.buttonRedo.BackColor = System.Drawing.Color.White;
-            this.buttonRedo.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonRedo.BackgroundImage")));
+            this.buttonRedo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRedo.BackgroundImage")));
             this.buttonRedo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRedo.Location = new System.Drawing.Point(91, 3);
@@ -121,7 +129,7 @@
             // 
             this.buttonUndo.AllowDrop = true;
             this.buttonUndo.BackColor = System.Drawing.Color.White;
-            this.buttonUndo.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonUndo.BackgroundImage")));
+            this.buttonUndo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonUndo.BackgroundImage")));
             this.buttonUndo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUndo.Location = new System.Drawing.Point(49, 3);
@@ -148,19 +156,18 @@
             // LabelCurColor
             // 
             this.LabelCurColor.BackColor = System.Drawing.Color.Black;
-            this.LabelCurColor.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.LabelCurColor.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelCurColor.Location = new System.Drawing.Point(122, 19);
             this.LabelCurColor.Name = "LabelCurColor";
             this.LabelCurColor.Size = new System.Drawing.Size(36, 36);
             this.LabelCurColor.TabIndex = 12;
             this.toolTipCurColor.SetToolTip(this.LabelCurColor, "Ваш цвет");
-            this.LabelCurColor.MouseHover += new System.EventHandler(this.LabelCurColor_MouseHover);
             // 
             // buttonPalette
             // 
             this.buttonPalette.AllowDrop = true;
             this.buttonPalette.BackColor = System.Drawing.Color.Snow;
-            this.buttonPalette.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonPalette.BackgroundImage")));
+            this.buttonPalette.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPalette.BackgroundImage")));
             this.buttonPalette.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonPalette.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPalette.Location = new System.Drawing.Point(164, 3);
@@ -258,7 +265,7 @@
             // 
             // labelWidth
             // 
-            this.labelWidth.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.labelWidth.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelWidth.Location = new System.Drawing.Point(0, 48);
             this.labelWidth.Name = "labelWidth";
             this.labelWidth.Size = new System.Drawing.Size(199, 24);
@@ -288,7 +295,7 @@
             // 
             // labelBrush
             // 
-            this.labelBrush.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.labelBrush.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelBrush.Location = new System.Drawing.Point(0, 52);
             this.labelBrush.Name = "labelBrush";
             this.labelBrush.Size = new System.Drawing.Size(57, 24);
@@ -299,7 +306,7 @@
             // 
             this.buttonBrush.AllowDrop = true;
             this.buttonBrush.BackColor = System.Drawing.Color.White;
-            this.buttonBrush.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonBrush.BackgroundImage")));
+            this.buttonBrush.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonBrush.BackgroundImage")));
             this.buttonBrush.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonBrush.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBrush.Location = new System.Drawing.Point(0, 0);
@@ -328,7 +335,7 @@
             // 
             this.buttonPolyline.AllowDrop = true;
             this.buttonPolyline.BackColor = System.Drawing.Color.White;
-            this.buttonPolyline.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonPolyline.BackgroundImage")));
+            this.buttonPolyline.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPolyline.BackgroundImage")));
             this.buttonPolyline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonPolyline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPolyline.Location = new System.Drawing.Point(80, 39);
@@ -342,7 +349,7 @@
             // 
             this.buttonPolygon.AllowDrop = true;
             this.buttonPolygon.BackColor = System.Drawing.Color.White;
-            this.buttonPolygon.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonPolygon.BackgroundImage")));
+            this.buttonPolygon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPolygon.BackgroundImage")));
             this.buttonPolygon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonPolygon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPolygon.Location = new System.Drawing.Point(80, 3);
@@ -356,7 +363,7 @@
             // 
             this.buttonEllipse.AllowDrop = true;
             this.buttonEllipse.BackColor = System.Drawing.Color.White;
-            this.buttonEllipse.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonEllipse.BackgroundImage")));
+            this.buttonEllipse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEllipse.BackgroundImage")));
             this.buttonEllipse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEllipse.Location = new System.Drawing.Point(3, 39);
@@ -370,7 +377,7 @@
             // 
             this.buttonTriangle.AllowDrop = true;
             this.buttonTriangle.BackColor = System.Drawing.Color.White;
-            this.buttonTriangle.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonTriangle.BackgroundImage")));
+            this.buttonTriangle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonTriangle.BackgroundImage")));
             this.buttonTriangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonTriangle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTriangle.Location = new System.Drawing.Point(41, 39);
@@ -378,12 +385,13 @@
             this.buttonTriangle.Size = new System.Drawing.Size(36, 33);
             this.buttonTriangle.TabIndex = 10;
             this.buttonTriangle.UseVisualStyleBackColor = false;
+            this.buttonTriangle.Click += new System.EventHandler(this.buttonTriangle_Click);
             // 
             // buttonLine
             // 
             this.buttonLine.AllowDrop = true;
             this.buttonLine.BackColor = System.Drawing.Color.White;
-            this.buttonLine.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonLine.BackgroundImage")));
+            this.buttonLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonLine.BackgroundImage")));
             this.buttonLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLine.Location = new System.Drawing.Point(41, 3);
@@ -397,7 +405,7 @@
             // 
             this.buttonRectangle.AllowDrop = true;
             this.buttonRectangle.BackColor = System.Drawing.Color.White;
-            this.buttonRectangle.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("buttonRectangle.BackgroundImage")));
+            this.buttonRectangle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRectangle.BackgroundImage")));
             this.buttonRectangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonRectangle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRectangle.Location = new System.Drawing.Point(3, 3);
@@ -406,12 +414,15 @@
             this.buttonRectangle.TabIndex = 6;
             this.buttonRectangle.UseVisualStyleBackColor = false;
             this.buttonRectangle.Click += new System.EventHandler(this.buttonRectangle_Click);
+            this.buttonRectangle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonRectangle_MouseDown);
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.файлToolStripMenuItem, this.оПрограммеToolStripMenuItem});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1076, 28);
@@ -420,47 +431,47 @@
             // 
             // файлToolStripMenuItem
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.OpenToolStripMenuItem, this.SaveToolStripMenuItem, this.ExitToolStripMenuItem});
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenToolStripMenuItem,
+            this.SaveToolStripMenuItem,
+            this.ExitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.OpenToolStripMenuItem.Text = "Открыть";
-            this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.SaveToolStripMenuItem.Text = "Сохранить";
-            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.ExitToolStripMenuItem.Text = "Выход";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // toolTipNumDeg
             // 
             this.toolTipNumDeg.BackColor = System.Drawing.Color.White;
-            this.toolTipNumDeg.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
+            this.toolTipNumDeg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             // 
             // toolTipCurColor
             // 
             this.toolTipCurColor.BackColor = System.Drawing.Color.White;
-            this.toolTipCurColor.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
+            this.toolTipCurColor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             // 
             // DrawPanel
             // 
@@ -472,8 +483,6 @@
             this.DrawPanel.Size = new System.Drawing.Size(1076, 637);
             this.DrawPanel.TabIndex = 4;
             this.DrawPanel.TabStop = false;
-            this.DrawPanel.SizeChanged += new System.EventHandler(this.DrawPanel_SizeChanged);
-            this.DrawPanel.Click += new System.EventHandler(this.DrawPanel_Click);
             this.DrawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseDown);
             this.DrawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseMove);
             this.DrawPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseUp);
@@ -492,17 +501,18 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.trackBarLineWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panelForFigures.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.DrawPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrawPanel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.PictureBox DrawPanel;

@@ -18,8 +18,12 @@ namespace BaseFigure
 
         public abstract void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart);
 
-        public abstract void OnMouseDownClick(int xClick, int yClick, Bitmap originalCanvas);
+        public abstract void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas);
 
-        public abstract void OnMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick);
+        public abstract void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick);
+
+        public abstract void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen);
+
+        public abstract void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen);
     }
 }
