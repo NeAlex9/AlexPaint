@@ -77,6 +77,7 @@ namespace AlexPaint
             if (((e.Button & MouseButtons.Right) != 0) && (Points.Count > 2))
             {
                 RightMouseUpClick(e, assets, DrawPanel);
+                FinishPainting();
             }
         }
 
@@ -119,7 +120,6 @@ namespace AlexPaint
             Points.Add(new Point(Points[0].X, Points[0].Y));
             FillAndRecoverFigure(g, e, assets.MyPen);
             g1 = g;
-            FinishPainting();
             DrawPanel.Image = assets.MainCanvas;
         }
     }
