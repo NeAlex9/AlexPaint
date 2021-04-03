@@ -47,12 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Figures\Brush.cs" />
-    <Compile Include="Figures\Ellipse.cs" />
+    <Compile Include="Figures\SimpleFigures\BaseSimpleFigures.cs" />
+    <Compile Include="Figures\SimpleFigures\Ellipse.cs" />
     <Compile Include="Figures\Line.cs" />
     <Compile Include="Figures\Polygon.cs" />
     <Compile Include="Figures\Polyline.cs" />
-    <Compile Include="Figures\Rectangle.cs" />
-    <Compile Include="Figures\Triangle.cs" />
+    <Compile Include="Figures\SimpleFigures\Rectangle.cs" />
+    <Compile Include="Figures\SimpleFigures\Triangle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
