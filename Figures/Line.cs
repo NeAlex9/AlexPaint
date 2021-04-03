@@ -53,5 +53,15 @@ namespace AlexPaint
         {
             Points.Clear();
         }
+
+        public override void Redraw(Graphics g, Pen myPen)
+        {
+
+        }
+
+        public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            
+        }
     }
 }

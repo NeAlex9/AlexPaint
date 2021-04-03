@@ -7,7 +7,7 @@ namespace AlexPaint
 {
     public class Ellipse : BaseSimpleFigures
     {
-        
+
         public override void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
         {
             int len = Points.Count;
@@ -27,6 +27,15 @@ namespace AlexPaint
             {
                 g.DrawEllipse(myPen, e.X, e.Y, xStart - e.X, yStart - e.Y);
             }
+        }
+
+        public override void Redraw(Graphics g, Pen myPen)
+        {
+
+        }
+
+        public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
         }
 
     }

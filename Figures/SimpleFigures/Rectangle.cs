@@ -18,5 +18,15 @@ namespace AlexPaint
             Points.Add(new Point(xStart, e.Y));
             g.DrawPolygon(myPen, Points.ToArray());
         }
+
+        public override void Redraw(Graphics g, Pen myPen)
+        {
+
+        }
+
+        public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+
+        }
     }
 }

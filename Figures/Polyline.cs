@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using BaseFigure;
 
@@ -6,8 +7,20 @@ namespace AlexPaint
 {
     public class Polyline : Figure
     {
+
+        public Bitmap CanvasWithoutCurrentFigure { set; get; }
+
         public Polyline()
         {
+
+        }
+
+        private void RecoverFigure(Graphics g, Pen myPen)
+        {
+            for (int i = 0; i < Points.Count - 1; i++)
+            {
+                g.DrawLine(myPen, Points[i], Points[i + 1]);
+            }
         }
 
         public override void PrepareForDrawing(MouseEventArgs e, DrawingAssets assets)
@@ -17,6 +30,7 @@ namespace AlexPaint
                 if (assets.CurrentFigure.Points.Count < 1)
                 {
                     Points.Add(new Point(e.X, e.Y));
+                    CanvasWithoutCurrentFigure = (Bitmap)assets.MainCanvas.Clone();
                 }
             }
         }
@@ -64,6 +78,21 @@ namespace AlexPaint
         public override void FinishPainting()
         {
             Points.Clear();
+        }
+
+        public override void Redraw(Graphics g, Pen myPen)
+        {
+            g.Clear(Color.White);
+            g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
+            for (int i = 0; i < Points.Count - 1; i++)
+            {
+                g.DrawLine(myPen, Points[i], Points[i + 1]);
+            }
+        }
+
+        public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            FinishPainting();
         }
     }
 }

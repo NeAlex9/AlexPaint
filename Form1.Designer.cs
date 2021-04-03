@@ -1,7 +1,7 @@
 ﻿namespace AlexPaint
 {
     partial class Form1
-    { 
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -65,6 +65,7 @@
             this.toolTipNumDeg = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipCurColor = new System.Windows.Forms.ToolTip(this.components);
             this.DrawPanel = new System.Windows.Forms.PictureBox();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel5.SuspendLayout();
@@ -88,7 +89,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panelForFigures);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 30);
+            this.panel2.Location = new System.Drawing.Point(0, 28);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1076, 98);
             this.panel2.TabIndex = 1;
@@ -175,6 +176,7 @@
             this.buttonPalette.Size = new System.Drawing.Size(68, 66);
             this.buttonPalette.TabIndex = 19;
             this.buttonPalette.UseVisualStyleBackColor = false;
+            this.buttonPalette.Click += new System.EventHandler(this.buttonPalette_Click);
             // 
             // buttonBlack
             // 
@@ -314,7 +316,7 @@
             this.buttonBrush.Size = new System.Drawing.Size(57, 49);
             this.buttonBrush.TabIndex = 11;
             this.buttonBrush.UseVisualStyleBackColor = false;
-            this.buttonBrush.Click += new System.EventHandler(this.buttonBrush_Click);
+            this.buttonBrush.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonBrush_MouseClick);
             // 
             // panelForFigures
             // 
@@ -343,7 +345,7 @@
             this.buttonPolyline.Size = new System.Drawing.Size(36, 33);
             this.buttonPolyline.TabIndex = 9;
             this.buttonPolyline.UseVisualStyleBackColor = false;
-            this.buttonPolyline.Click += new System.EventHandler(this.buttonPolyline_Click);
+            this.buttonPolyline.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonPolyline_MouseClick);
             // 
             // buttonPolygon
             // 
@@ -357,7 +359,7 @@
             this.buttonPolygon.Size = new System.Drawing.Size(36, 33);
             this.buttonPolygon.TabIndex = 8;
             this.buttonPolygon.UseVisualStyleBackColor = false;
-            this.buttonPolygon.Click += new System.EventHandler(this.buttonPolygon_Click);
+            this.buttonPolygon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonPolygon_MouseClick);
             // 
             // buttonEllipse
             // 
@@ -371,7 +373,7 @@
             this.buttonEllipse.Size = new System.Drawing.Size(36, 33);
             this.buttonEllipse.TabIndex = 7;
             this.buttonEllipse.UseVisualStyleBackColor = false;
-            this.buttonEllipse.Click += new System.EventHandler(this.buttonEllipse_Click);
+            this.buttonEllipse.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonEllipse_MouseClick);
             // 
             // buttonTriangle
             // 
@@ -385,7 +387,7 @@
             this.buttonTriangle.Size = new System.Drawing.Size(36, 33);
             this.buttonTriangle.TabIndex = 10;
             this.buttonTriangle.UseVisualStyleBackColor = false;
-            this.buttonTriangle.Click += new System.EventHandler(this.buttonTriangle_Click);
+            this.buttonTriangle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonTriangle_MouseClick);
             // 
             // buttonLine
             // 
@@ -399,7 +401,7 @@
             this.buttonLine.Size = new System.Drawing.Size(36, 33);
             this.buttonLine.TabIndex = 1;
             this.buttonLine.UseVisualStyleBackColor = false;
-            this.buttonLine.Click += new System.EventHandler(this.buttonLine_Click);
+            this.buttonLine.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonLine_MouseClick);
             // 
             // buttonRectangle
             // 
@@ -413,7 +415,6 @@
             this.buttonRectangle.Size = new System.Drawing.Size(36, 33);
             this.buttonRectangle.TabIndex = 6;
             this.buttonRectangle.UseVisualStyleBackColor = false;
-            this.buttonRectangle.Click += new System.EventHandler(this.buttonRectangle_Click);
             this.buttonRectangle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonRectangle_MouseDown);
             // 
             // menuStrip1
@@ -425,7 +426,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1076, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1076, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -478,14 +479,18 @@
             this.DrawPanel.BackColor = System.Drawing.Color.White;
             this.DrawPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DrawPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DrawPanel.Location = new System.Drawing.Point(0, 128);
+            this.DrawPanel.Location = new System.Drawing.Point(0, 126);
             this.DrawPanel.Name = "DrawPanel";
-            this.DrawPanel.Size = new System.Drawing.Size(1076, 635);
+            this.DrawPanel.Size = new System.Drawing.Size(1076, 637);
             this.DrawPanel.TabIndex = 4;
             this.DrawPanel.TabStop = false;
             this.DrawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseDown);
             this.DrawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseMove);
             this.DrawPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseUp);
+            // 
+            // colorDialog
+            // 
+            this.colorDialog.SolidColorOnly = true;
             // 
             // Form1
             // 
@@ -575,5 +580,7 @@
         private System.Windows.Forms.Panel panel2;
 
         #endregion
+
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }
