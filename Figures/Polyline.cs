@@ -12,7 +12,6 @@ namespace AlexPaint
 
         public Polyline()
         {
-
         }
 
         private void RecoverFigure(Graphics g, Pen myPen)
@@ -93,6 +92,16 @@ namespace AlexPaint
         public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
             FinishPainting();
+        }
+
+        public override void Reset(KeyPressEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 27 && Points.Count > 0)
+            {
+                assets.MainCanvas = (Bitmap)CanvasWithoutCurrentFigure.Clone();
+                DrawPanel.Image = assets.MainCanvas;
+                FinishPainting();
+            }
         }
     }
 }

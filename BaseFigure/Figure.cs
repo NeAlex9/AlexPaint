@@ -27,5 +27,8 @@ namespace BaseFigure
         public abstract void Redraw(Graphics g, Pen myPen);
 
         public abstract void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel);
+
+        public abstract void Reset(KeyPressEventArgs e, DrawingAssets assets, PictureBox DrawPanel);
+        
     }
 }

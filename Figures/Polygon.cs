@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using BaseFigure;
@@ -155,6 +156,16 @@ namespace AlexPaint
                 FinishPainting();
             }
 
+        }
+
+        public override void Reset(KeyPressEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 27 && Points.Count > 0)
+            {
+                assets.MainCanvas = (Bitmap)CanvasWithoutCurrentFigure.Clone();
+                DrawPanel.Image = assets.MainCanvas;
+                FinishPainting();
+            }
         }
     }
 }

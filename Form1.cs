@@ -24,59 +24,59 @@ namespace AlexPaint
         {
             InitializeComponent();
             myPaint = new Paint();
-
+            KeyPreview = true;
         }
 
         private void buttonRectangle_MouseDown(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(e, myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Rectangle>();
-            
+
         }
 
         private void buttonPolygon_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(e, myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Polygone>();
-           
+
         }
 
         private void buttonEllipse_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(e, myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Ellipse>();
-            
+
         }
 
         private void buttonTriangle_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(e, myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Triangle>();
-            
+
         }
 
         private void buttonPolyline_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(e, myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Polyline>();
-            
+
         }
 
         private void buttonBrush_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(e, myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Brush>();
-            
+
         }
 
         private void buttonLine_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(e, myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Line>();
-          
+
         }
 
-    
+
         private void DrawPanel_MouseDown(object sender, MouseEventArgs e)
         {
             myPaint.MyDrawingAssets.CurrentFigure.PrepareForDrawing(e, myPaint.MyDrawingAssets);
@@ -95,7 +95,7 @@ namespace AlexPaint
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {
-            var clickedButton =  sender as Button;
+            var clickedButton = sender as Button;
             if (clickedButton != null)
             {
                 LabelCurColor.BackColor = clickedButton.BackColor;
@@ -124,6 +124,11 @@ namespace AlexPaint
             myPaint.MyDrawingAssets.MyPen.Color = LabelCurColor.BackColor;
             myPaint.MyDrawingAssets.CurrentFigure.Redraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), myPaint.MyDrawingAssets.MyPen);
             DrawPanel.Refresh();
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            myPaint.MyDrawingAssets.CurrentFigure.Reset(e, myPaint.MyDrawingAssets, DrawPanel);
         }
     }
 

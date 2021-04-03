@@ -56,5 +56,10 @@ namespace AlexPaint
         public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
         }
+
+        public override void Reset(KeyPressEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+
+        }
     }
 }

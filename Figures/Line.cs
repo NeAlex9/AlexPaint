@@ -63,5 +63,10 @@ namespace AlexPaint
         {
             
         }
+
+        public override void Reset(KeyPressEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+
+        }
     }
 }
