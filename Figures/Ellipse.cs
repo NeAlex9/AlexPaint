@@ -7,58 +7,70 @@ namespace AlexPaint
 {
     public class Ellipse : Figure
     {
-        List<Point> Points { set; get; }
         public Ellipse()
         {
-            Points = new List<Point>();
+            
         }
 
-        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart)
+        public override void PrepareForDrawing(MouseEventArgs e, DrawingAssets assets)
+        {
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Points.Add(new Point(e.X, e.Y));
+            }
+        }
+
+        public override void DrawWhileMouseMove(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Graphics g = Graphics.FromImage(assets.HelperCanvas);
+                g.Clear(Color.White);
+                g.DrawImage(assets.MainCanvas, 0, 0);
+                DrawFigure(g, e, assets.MyPen);
+                DrawPanel.Image = assets.HelperCanvas;
+                DrawPanel.Refresh();
+            }
+        }
+
+        public void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
+        {
+            int len = Points.Count;
+            int xPrev = Points[len - 1].X;
+            int yPrev = Points[len - 1].Y;
+            if (xPrev <= e.X && yPrev <= e.Y)
+            {
+                g.DrawEllipse(myPen, xPrev, yPrev, e.X - xPrev, e.Y - yPrev);
+            }
+            else if (xPrev > e.X && yPrev <= e.Y)
+            {
+                g.DrawEllipse(myPen, e.X, yPrev, xPrev - e.X, e.Y - yPrev);
+            }
+            else if ((xPrev <= e.X && yPrev > e.Y))
+            {
+                g.DrawEllipse(myPen, xPrev, e.Y, e.X - xPrev, yPrev - e.Y);
+            }
+            else if (xPrev > e.X && yPrev > e.Y)
+            {
+                g.DrawEllipse(myPen, e.X, e.Y, xPrev - e.X, yPrev - e.Y);
+            }
+        }
+
+        public override void SetFigure(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Graphics g = Graphics.FromImage(assets.MainCanvas);
+                DrawFigure(g, e, assets.MyPen);
+                DrawPanel.Image = assets.MainCanvas;
+                FinishPainting(); 
+            }
+        }
+
+
+        public override void FinishPainting()
         {
             Points.Clear();
-            Points.Add(new Point(xStart, yStart));
-            Points.Add(new Point(e.X, yStart));
-            Points.Add(new Point(e.X, e.Y));
-            Points.Add(new Point(xStart, e.Y));
-            if (xStart <= e.X && yStart <= e.Y)
-            {
-                g.DrawEllipse(myPen, xStart, yStart, e.X - xStart, e.Y - yStart);
-            }
-            else if (xStart > e.X && yStart <= e.Y)
-            {
-                g.DrawEllipse(myPen, e.X, yStart, xStart - e.X, e.Y - yStart);
-            }
-            else if ((xStart <= e.X && yStart > e.Y))
-            {
-                g.DrawEllipse(myPen, xStart, e.Y, e.X - xStart, yStart - e.Y);
-            }
-            else if (xStart > e.X && yStart > e.Y)
-            {
-                g.DrawEllipse(myPen, e.X, e.Y, xStart - e.X, yStart - e.Y);
-            }
-        }
-        
-        public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
-        {
-            xStart = xClick;
-            yStart = yClick;
-            CanvasWithOriginalFigure = originalCanvas;
-        }
-        
-        public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
-        {
-            Draw(g, e, myPen, xPrevClick, yPrevClick);
-            Draw(g1, e, myPen, xPrevClick, yPrevClick);
-        }
-
-        public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
-        {
-
-        }
-
-        public override void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
-        {
-
         }
     }
 }

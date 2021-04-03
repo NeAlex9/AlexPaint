@@ -8,15 +8,39 @@ namespace AlexPaint
     public class Triangle : Figure
     {
 
-        public List<Point> Points { set; get; }
+        private int xStart;
+        private int yStart;
+
         public Triangle()
         {
             Points = new List<Point>();
         }
 
-        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart)
+        public override void PrepareForDrawing(MouseEventArgs e, DrawingAssets assets)
         {
-            Points.Clear();
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                xStart = e.X;
+                yStart = e.Y;
+            }
+        }
+
+        public override void DrawWhileMouseMove(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Graphics g = Graphics.FromImage(assets.HelperCanvas);
+                g.Clear(Color.White);
+                g.DrawImage(assets.MainCanvas, 0, 0);
+                Points.Clear();
+                DrawFigure(g, e, assets.MyPen);
+                DrawPanel.Image = assets.HelperCanvas;
+                DrawPanel.Refresh();
+            }
+        }
+
+        public void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
+        {
             if (yStart <= e.Y)
             {
                 Points.Add(new Point(xStart, e.Y));
@@ -45,29 +69,24 @@ namespace AlexPaint
                 }
                 g.DrawPolygon(myPen, Points.ToArray());
             }
-        }
-
-        public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
-        {
-            xStart = xClick;
-            yStart = yClick;
-            CanvasWithOriginalFigure = originalCanvas;
-        }
-
-        public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
-        {
-            Draw(g, e, myPen, xPrevClick, yPrevClick);
-            Draw(g1, e, myPen, xPrevClick, yPrevClick);
-        }
-
-        public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
-        {
 
         }
 
-        public override void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        public override void SetFigure(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Graphics g = Graphics.FromImage(assets.MainCanvas);
+                Points.Clear();
+                DrawFigure(g, e, assets.MyPen);
+                DrawPanel.Image = assets.MainCanvas;
+                FinishPainting();
+            }
+        }
 
+        public override void FinishPainting()
+        {
+            Points.Clear();
         }
     }
 }

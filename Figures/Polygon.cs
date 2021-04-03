@@ -8,11 +8,16 @@ namespace AlexPaint
     public class Polygone : Figure
     {
         public int NumSide { get; set; }
-        public List<Point> Points { get; set; }
+        public Bitmap CanvasWithUnfilledFigure { get; set; }
 
         public Polygone()
         {
-            Points = new List<Point>();
+            CanvasWithUnfilledFigure = new Bitmap(1920, 1080);
+        }
+
+        public override void FinishPainting()
+        {
+            Points.Clear();
         }
 
         private void FillAndRecoverFigure(Graphics g, MouseEventArgs e, Pen myPen)
@@ -31,27 +36,61 @@ namespace AlexPaint
             }
         }
 
-        public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
+        public override void PrepareForDrawing(MouseEventArgs e, DrawingAssets assets)
         {
-            if (Points.Count < 1)
+            if ((e.Button & MouseButtons.Left) != 0)
             {
-                CanvasWithOriginalFigure = originalCanvas;
-                Points.Add(new Point(xClick, yClick));
-                xStart = xClick;
-                yStart = yClick;
+                if (assets.CurrentFigure.Points.Count < 1)
+                {
+                    Points.Add(new Point(e.X, e.Y));
+                    CanvasWithUnfilledFigure = assets.MainCanvas;
+                }
             }
         }
 
-        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClock, int yPrevClock)
+        public override void DrawWhileMouseMove(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
-            int len = Points.Count;
-            FillAndRecoverFigure(g, e, myPen);
-            g.DrawLine(myPen, xPrevClock, yPrevClock, e.X, e.Y);
+            if ((e.Button & MouseButtons.Left) != 0)
+            {
+                Graphics g = Graphics.FromImage(assets.HelperCanvas);
+                g.Clear(Color.White);
+                g.DrawImage(CanvasWithUnfilledFigure, 0, 0);
+                DrawFigure(g, e, assets.MyPen);
+                DrawPanel.Image = assets.HelperCanvas;
+                DrawPanel.Refresh();
+            }
         }
 
-        public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+        public void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
+        {
+                int len = Points.Count;
+                FillAndRecoverFigure(g, e, myPen);
+                g.DrawLine(myPen, Points[len - 1].X, Points[len - 1].Y, e.X, e.Y);
+        }
+
+        public override void SetFigure(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            if ((e.Button & MouseButtons.Left) != 0)
+            {
+                LeftMouseUpClick(e, assets, DrawPanel);
+            }
+            if (((e.Button & MouseButtons.Right) != 0) && (Points.Count > 2))
+            {
+                RightMouseUpClick(e, assets, DrawPanel);
+            }
+        }
+
+        public void LeftMouseUpClick(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
             Points.Add(new Point(e.X, e.Y));
+            assets.MainCanvas = (Bitmap)CanvasWithUnfilledFigure.Clone();
+            Graphics g = Graphics.FromImage(assets.MainCanvas);
+
+            /*Graphics g = Graphics.FromImage(assets.MainCanvas);
+            g.Clear(Color.White);                                         разберись почему не работает
+            g.DrawImage(CanvasWithUnfilledFigure, 0, 0);*/
+
+            Graphics g1 = Graphics.FromImage(CanvasWithUnfilledFigure);
             int len = Points.Count, round = 20;
             if (len > 1)
             {
@@ -59,32 +98,29 @@ namespace AlexPaint
                                 (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y))
                 {
                     Points[len - 1] = Points[0];
-                    FinishPainting(g, g1, e, myPen);
+                    FillAndRecoverFigure(g, e, assets.MyPen);
+                    g1 = g;
+                    FinishPainting();
+                    DrawPanel.Image = assets.MainCanvas;
                     return;
                 }
-                g.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
+                g.DrawLine(assets.MyPen, Points[len - 2].X, Points[len - 2].Y, e.X, e.Y);
             }
-            FillAndRecoverFigure(g, e, myPen);
-            g1.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
-            xStart = e.X;
-            yStart = e.Y;
+            FillAndRecoverFigure(g, e, assets.MyPen);
+            g1.DrawLine(assets.MyPen, Points[len - 2].X, Points[len - 2].Y, e.X, e.Y);
+            DrawPanel.Image = assets.MainCanvas;
         }
 
-        public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        public void RightMouseUpClick(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
-            if (Points.Count > 1)
-            {
-                Points.Add(new Point(Points[0].X, Points[0].Y));
-                FinishPainting(g, g1, e, myPen);
-            }
-            
-        }
-
-        public override void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
-        {
-            FillAndRecoverFigure(g, e, myPen);
+            assets.MainCanvas = (Bitmap)CanvasWithUnfilledFigure.Clone();
+            Graphics g = Graphics.FromImage(assets.MainCanvas);
+            Graphics g1 = Graphics.FromImage(CanvasWithUnfilledFigure);
+            Points.Add(new Point(Points[0].X, Points[0].Y));
+            FillAndRecoverFigure(g, e, assets.MyPen);
             g1 = g;
-            Points.Clear();
+            FinishPainting();
+            DrawPanel.Image = assets.MainCanvas;
         }
     }
 }
@@ -108,3 +144,59 @@ public void DrawPolygon(PaintEventArgs e)
     Pen myPen = new Pen(Color.Black);
     g.DrawPolygon(myPen, arrPoints);
 }*/
+
+
+
+
+
+
+
+
+/*public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
+        {
+            if (Points.Count < 1)
+            {
+                CanvasWithOriginalFigure = originalCanvas;
+                Points.Add(new Point(xClick, yClick));
+                xStart = xClick;
+                yStart = yClick;
+            }
+        }
+
+        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xPrevClock, int yPrevClock)
+{
+    FillAndRecoverFigure(g, e, myPen);
+    g.DrawLine(myPen, xPrevClock, yPrevClock, e.X, e.Y);
+}
+
+public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+{
+    Points.Add(new Point(e.X, e.Y));
+    int len = Points.Count, round = 20;
+    if (len > 1)
+    {
+        if ((Points[0].X - round < Points[len - 1].X && Points[0].X + round > Points[len - 1].X) &&
+                        (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y))
+        {
+            Points[len - 1] = Points[0];
+            FinishPainting(g, g1, e, myPen);
+            return;
+        }
+        g.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
+    }
+    FillAndRecoverFigure(g, e, myPen);
+    g1.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
+    xStart = e.X;
+    yStart = e.Y;
+}
+
+public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+{
+    if (Points.Count > 1)
+    {
+        Points.Add(new Point(Points[0].X, Points[0].Y));
+        FinishPainting(g, g1, e, myPen);
+    }
+
+}
+*/

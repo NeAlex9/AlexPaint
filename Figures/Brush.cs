@@ -6,32 +6,25 @@ namespace AlexPaint
 {
     public class Brush : Figure
     {
-        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart)
-        {
-            g.DrawLine(myPen, xStart, yStart, e.X, e.Y);
-        }
-        
-        public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
-        {
-            xStart = xClick;
-            yStart = yClick;
-            CanvasWithOriginalFigure = originalCanvas;
-        }
-        
-        public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
-        {
-            
-        }
 
-        public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        public override void PrepareForDrawing(MouseEventArgs e, DrawingAssets assets)
         {
-            g1 = g;
 
         }
 
-        public override void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        public override void DrawWhileMouseMove(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
-            
+
+        }
+
+        public override void SetFigure(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        {
+
+        }
+
+        public override void FinishPainting()
+        {
+            Points.Clear();
         }
     }
 }

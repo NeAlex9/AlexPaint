@@ -9,33 +9,49 @@ namespace AlexPaint
         public Line()
         {
         }
-        
-        public override void Draw(Graphics g, MouseEventArgs e, Pen myPen, int xStart, int yStart)
+
+        public override void PrepareForDrawing(MouseEventArgs e, DrawingAssets assets)
         {
-            g.DrawLine(myPen, xStart, yStart , e.X, e.Y);
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Points.Add(new Point(e.X, e.Y));
+            }
         }
 
-        public override void LeftMouseDownClick(int xClick, int yClick, Bitmap originalCanvas)
+        public override void DrawWhileMouseMove(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
-            xStart = xClick;
-            yStart = yClick;
-            CanvasWithOriginalFigure = originalCanvas;
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Graphics g = Graphics.FromImage(assets.HelperCanvas);
+                g.Clear(Color.White);
+                g.DrawImage(assets.MainCanvas, 0, 0);
+                DrawFigure(g, e, assets.MyPen);
+                DrawPanel.Image = assets.HelperCanvas;
+                DrawPanel.Refresh();
+            }
         }
 
-        public override void LeftMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen, int xPrevClick, int yPrevClick)
+        public void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
         {
-            g.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
-            g1.DrawLine(myPen, xPrevClick, yPrevClick, e.X, e.Y);
+            int len = Points.Count;
+            g.DrawLine(myPen, Points[len - 1].X, Points[len - 1].Y, e.X, e.Y);
         }
 
-        public override void RightMouseUpClick(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
+        public override void SetFigure(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
         {
-            
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                Graphics g = Graphics.FromImage(assets.MainCanvas);
+                DrawFigure(g, e, assets.MyPen);
+                DrawPanel.Image = assets.MainCanvas;
+                FinishPainting();    
+            }
         }
 
-        public override void FinishPainting(Graphics g, Graphics g1, MouseEventArgs e, Pen myPen)
-        {
 
+        public override void FinishPainting()
+        {
+            Points.Clear();
         }
     }
 }

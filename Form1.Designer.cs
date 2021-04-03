@@ -88,7 +88,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panelForFigures);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 28);
+            this.panel2.Location = new System.Drawing.Point(0, 30);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1076, 98);
             this.panel2.TabIndex = 1;
@@ -425,7 +425,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1076, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1076, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -478,9 +478,9 @@
             this.DrawPanel.BackColor = System.Drawing.Color.White;
             this.DrawPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DrawPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DrawPanel.Location = new System.Drawing.Point(0, 126);
+            this.DrawPanel.Location = new System.Drawing.Point(0, 128);
             this.DrawPanel.Name = "DrawPanel";
-            this.DrawPanel.Size = new System.Drawing.Size(1076, 637);
+            this.DrawPanel.Size = new System.Drawing.Size(1076, 635);
             this.DrawPanel.TabIndex = 4;
             this.DrawPanel.TabStop = false;
             this.DrawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseDown);

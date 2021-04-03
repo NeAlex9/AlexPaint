@@ -10,27 +10,12 @@ namespace AlexPaint
 {
     public class Paint
     {
-
-        private Pen myPen = new Pen(Color.Black, 1);
-
-        public Pen MyPen
-        {
-            get => myPen;
-            set => myPen = value;
-        }
-
-        public Figure CurrentFigure { set; get; }
-        public Bitmap MainCanvas { get; set; }
-        public Bitmap HelperCanvas { get; set; }
+        public DrawingAssets MyDrawingAssets { get; set; }
 
         public List<Figure> AllFigures { set; get; }
 
         public Paint()
         {
-            myPen.StartCap = LineCap.Round;
-            myPen.EndCap = LineCap.Round;
-            MainCanvas = new Bitmap(1920, 1080);
-            HelperCanvas = new Bitmap(1920, 1080);
             AllFigures = new List<Figure>();
             AllFigures.Add(new Line());
             AllFigures.Add(new Brush());
@@ -39,16 +24,16 @@ namespace AlexPaint
             AllFigures.Add(new Polyline());
             AllFigures.Add(new Rectangle());
             AllFigures.Add(new Triangle());
-            CurrentFigure = AllFigures[0];
+            MyDrawingAssets = new DrawingAssets(AllFigures);
         }
 
         public void SetFigureForDraw<T>()
         {
             for (int i = 0; i < AllFigures.Count; i++)
             {
-                if (AllFigures[i] is T && !(CurrentFigure is T))
+                if (AllFigures[i] is T && !(MyDrawingAssets.CurrentFigure is T))
                 {
-                    CurrentFigure = AllFigures[i];
+                    MyDrawingAssets.CurrentFigure = AllFigures[i];
                 }
             }
         }

@@ -1,8 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlexPaint", "AlexPaint.csproj", "{C366AD5D-9345-45AF-AC73-5A5D6D1B5B22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseFigure", "BaseFigure\BaseFigure.csproj", "{D0DA3DF5-31D1-4ED0-A9EA-7E5623EA1C8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseFigureAndDrawingAssets", "BaseFigure\BaseFigureAndDrawingAssets.csproj", "{D0DA3DF5-31D1-4ED0-A9EA-7E5623EA1C8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +22,10 @@ Global
 		{D0DA3DF5-31D1-4ED0-A9EA-7E5623EA1C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0DA3DF5-31D1-4ED0-A9EA-7E5623EA1C8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CE124BF-5761-4873-8B70-3E561B2CAAD3}
 	EndGlobalSection
 EndGlobal

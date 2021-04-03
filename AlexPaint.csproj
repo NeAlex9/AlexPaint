@@ -88,9 +88,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="BaseFigure\BaseFigure.csproj">
+    <ProjectReference Include="BaseFigure\BaseFigureAndDrawingAssets.csproj">
       <Project>{d0da3df5-31d1-4ed0-a9ea-7e5623ea1c8c}</Project>
-      <Name>BaseFigure</Name>
+      <Name>BaseFigureAndDrawingAssets</Name>
     </ProjectReference>
     <ProjectReference Include="FiguresLib\FiguresLib.csproj">
       <Project>{add94af2-4f13-4d8e-b08b-c76904738ca9}</Project>
