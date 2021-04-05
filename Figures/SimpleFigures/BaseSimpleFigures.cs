@@ -19,40 +19,32 @@ namespace AlexPaint
             Points = new List<Point>();
         }
 
-        public override void PrepareForDrawing(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets)
+        public override void PrepareForDrawing(Point clickedPoint, DrawingAssets assets)
         {
-            if ((MouseButtons.Left & clickedButton) != 0)
-            {
-                xStart = clickedPoint.X;
-                yStart = clickedPoint.Y;
-                CanvasWithoutCurrentFigure = (Bitmap)assets.MainCanvas.Clone();
-            }
+            xStart = clickedPoint.X;
+            yStart = clickedPoint.Y;
+            CanvasWithoutCurrentFigure = (Bitmap)assets.MainCanvas.Clone();
         }
 
-        public override void DrawWhileMouseMove(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets, PictureBox DrawPanel)
+        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
-            if (MouseButtons.Left == clickedButton && xStart > 0 && yStart > 0)
-            {
-                Graphics g = Graphics.FromImage(assets.HelperCanvas);
-                g.Clear(Color.White);
-                g.DrawImage(assets.MainCanvas, 0, 0);
-                Points.Clear();
-                DrawFigure(g, clickedPoint, MyPen);
-                DrawPanel.Image = assets.HelperCanvas;
-                DrawPanel.Refresh();
-            }
+            Points.Clear();
+            DrawFigure(g, clickedPoint, MyPen);
         }
 
         public abstract void DrawFigure(Graphics g, Point clickedPoint, Pen myPen);
 
-        public override void SetFigure(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets, PictureBox DrawPanel)
+        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
-            if ((MouseButtons.Left & clickedButton) != 0 && xStart > 0 && yStart > 0)
+
+        }
+
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        {
+            if (xStart > 0 && yStart > 0)
             {
-                Graphics g = Graphics.FromImage(assets.MainCanvas);
                 Points.Clear();
                 DrawFigure(g, clickedPoint, MyPen);
-                DrawPanel.Image = assets.MainCanvas;
                 FinishPainting();
             }
         }

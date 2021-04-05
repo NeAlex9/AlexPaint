@@ -28,60 +28,82 @@ namespace AlexPaint
 
         private void buttonRectangle_MouseDown(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Rectangle>();
         }
 
         private void buttonPolygon_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Polygone>();
         }
 
         private void buttonEllipse_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Ellipse>();
         }
 
         private void buttonTriangle_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Triangle>();
         }
 
         private void buttonPolyline_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Polyline>();
         }
 
         private void buttonBrush_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Brush>();
         }
-
+        
         private void buttonLine_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
             myPaint.SetFigureForDraw<Line>();
         }
 
         private void DrawPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.PrepareForDrawing(new Point(e.X, e.Y), e.Button, myPaint.MyDrawingAssets);
+            if ((MouseButtons.Left & e.Button) != 0)
+            {
+                myPaint.MyDrawingAssets.CurrentFigure.PrepareForDrawing(new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+            }
         }
 
         private void DrawPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.DrawWhileMouseMove(new Point(e.X, e.Y), e.Button, myPaint.MyDrawingAssets, DrawPanel);
+            if (MouseButtons.Left == e.Button)
+            {
+                Graphics g = Graphics.FromImage(myPaint.MyDrawingAssets.HelperCanvas);
+                g.Clear(Color.White);
+                g.DrawImage(myPaint.MyDrawingAssets.CurrentFigure.CanvasWithoutCurrentFigure, 0, 0);
+                myPaint.MyDrawingAssets.CurrentFigure.DrawWhileMouseMove(g, new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+                DrawPanel.Image = myPaint.MyDrawingAssets.HelperCanvas;
+                DrawPanel.Refresh();
+            }
         }
 
         private void DrawPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.SetFigure(new Point(e.X, e.Y), e.Button, myPaint.MyDrawingAssets, DrawPanel);
-        }
+            if (MouseButtons.Left == e.Button)
+            {
+                Graphics g = Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas);
+                myPaint.MyDrawingAssets.CurrentFigure.LeftMouseUpClick(g, new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+                DrawPanel.Image = myPaint.MyDrawingAssets.MainCanvas;
+            }
+            if (MouseButtons.Right == e.Button)
+            {
+                Graphics g = Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas);
+                myPaint.MyDrawingAssets.CurrentFigure.RightMouseUpClick(g, new Point(e.X, e.Y), myPaint.MyDrawingAssets, DrawPanel);
+                DrawPanel.Image = myPaint.MyDrawingAssets.MainCanvas;
+            }
+        }  
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {

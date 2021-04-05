@@ -22,11 +22,13 @@ namespace BaseFigure
             Points = new List<Point>();
         }
 
-        public abstract void PrepareForDrawing(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets);
+        public abstract void PrepareForDrawing(Point clickedPoint, DrawingAssets assets);
 
-        public abstract void DrawWhileMouseMove(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets, PictureBox DrawPanel);
+        public abstract void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel);
 
-        public abstract void SetFigure(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets, PictureBox DrawPanel);
+        public abstract void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel);
+
+        public abstract void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel);
 
         public void FinishPainting()
         {
@@ -35,7 +37,7 @@ namespace BaseFigure
 
         public abstract void Redraw(Graphics g);
 
-        public virtual void BreakDraw(Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public virtual void BreakDraw(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
 
         }

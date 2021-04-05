@@ -14,10 +14,9 @@ namespace AlexPaint
             g.FillPolygon(myBrush, tempList.ToArray());
         }
 
-        public override void LeftMouseUpClick(Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
             Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
-            Graphics g = Graphics.FromImage(assets.MainCanvas);
             int len = Points.Count, round = 20;
             if ((Points[0].X - round < Points[len - 1].X && Points[0].X + round > Points[len - 1].X) &&
                             (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y))
@@ -29,15 +28,12 @@ namespace AlexPaint
                 return;
             }
             Redraw(g);
-            DrawPanel.Image = assets.MainCanvas;
         }
 
-        public override void RightMouseUpClick(Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
-            Graphics g = Graphics.FromImage(assets.MainCanvas);
             Points.Add(new Point(Points[0].X, Points[0].Y));
             Redraw(g);
-            DrawPanel.Image = assets.MainCanvas;
             FinishPainting();
         }
 
@@ -55,11 +51,11 @@ namespace AlexPaint
             }
         }
 
-        public override void BreakDraw(Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void BreakDraw(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
             if (Points.Count > 0)
             {
-                RightMouseUpClick(clickedPoint, assets, DrawPanel);
+                RightMouseUpClick(g, clickedPoint, assets, DrawPanel);
                 FinishPainting();
             }
 

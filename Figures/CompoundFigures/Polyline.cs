@@ -7,18 +7,18 @@ namespace AlexPaint
 {
     public class Polyline : BaseCompoundFigure
     {
-        public override void RightMouseUpClick(Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
             FinishPainting();
         }
 
-        public override void LeftMouseUpClick(Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
-            Graphics g = Graphics.FromImage(assets.MainCanvas);
+
             int len = Points.Count;
             g.DrawLine(MyPen, Points[len - 1].X, Points[len - 1].Y, clickedPoint.X, clickedPoint.Y);
             Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
-            DrawPanel.Image = assets.MainCanvas;
+
         }
 
         public override void Redraw(Graphics g)
@@ -31,7 +31,7 @@ namespace AlexPaint
             }
         }
 
-        public override void BreakDraw(Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void BreakDraw(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
         {
             FinishPainting();
         }
