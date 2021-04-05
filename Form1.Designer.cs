@@ -45,9 +45,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.labelWidth = new System.Windows.Forms.Label();
             this.trackBarLineWidth = new System.Windows.Forms.TrackBar();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.labelBrush = new System.Windows.Forms.Label();
-            this.buttonBrush = new System.Windows.Forms.Button();
             this.panelForFigures = new System.Windows.Forms.Panel();
             this.buttonPolyline = new System.Windows.Forms.Button();
             this.buttonPolygon = new System.Windows.Forms.Button();
@@ -69,7 +66,6 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).BeginInit();
-            this.panel3.SuspendLayout();
             this.panelForFigures.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DrawPanel)).BeginInit();
@@ -83,10 +79,9 @@
             this.panel2.Controls.Add(this.buttonUndo);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panelForFigures);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 30);
+            this.panel2.Location = new System.Drawing.Point(0, 28);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1076, 98);
             this.panel2.TabIndex = 1;
@@ -127,7 +122,7 @@
             this.panel5.Controls.Add(this.buttonRed);
             this.panel5.Controls.Add(this.buttonGreen);
             this.panel5.Controls.Add(this.buttonPink);
-            this.panel5.Location = new System.Drawing.Point(568, 0);
+            this.panel5.Location = new System.Drawing.Point(511, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(237, 72);
             this.panel5.TabIndex = 13;
@@ -238,7 +233,7 @@
             // 
             this.panel4.Controls.Add(this.labelWidth);
             this.panel4.Controls.Add(this.trackBarLineWidth);
-            this.panel4.Location = new System.Drawing.Point(345, 3);
+            this.panel4.Location = new System.Drawing.Point(285, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(202, 72);
             this.panel4.TabIndex = 1;
@@ -264,38 +259,6 @@
             this.trackBarLineWidth.Value = 1;
             this.trackBarLineWidth.Scroll += new System.EventHandler(this.trackBarLineWidth_Scroll);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.labelBrush);
-            this.panel3.Controls.Add(this.buttonBrush);
-            this.panel3.Location = new System.Drawing.Point(138, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(57, 76);
-            this.panel3.TabIndex = 0;
-            // 
-            // labelBrush
-            // 
-            this.labelBrush.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelBrush.Location = new System.Drawing.Point(0, 52);
-            this.labelBrush.Name = "labelBrush";
-            this.labelBrush.Size = new System.Drawing.Size(57, 24);
-            this.labelBrush.TabIndex = 1;
-            this.labelBrush.Text = "кисть";
-            // 
-            // buttonBrush
-            // 
-            this.buttonBrush.AllowDrop = true;
-            this.buttonBrush.BackColor = System.Drawing.Color.White;
-            this.buttonBrush.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonBrush.BackgroundImage")));
-            this.buttonBrush.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonBrush.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBrush.Location = new System.Drawing.Point(0, 0);
-            this.buttonBrush.Name = "buttonBrush";
-            this.buttonBrush.Size = new System.Drawing.Size(57, 49);
-            this.buttonBrush.TabIndex = 11;
-            this.buttonBrush.UseVisualStyleBackColor = false;
-            this.buttonBrush.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonBrush_MouseClick);
-            // 
             // panelForFigures
             // 
             this.panelForFigures.BackColor = System.Drawing.Color.White;
@@ -305,7 +268,7 @@
             this.panelForFigures.Controls.Add(this.buttonTriangle);
             this.panelForFigures.Controls.Add(this.buttonLine);
             this.panelForFigures.Controls.Add(this.buttonRectangle);
-            this.panelForFigures.Location = new System.Drawing.Point(198, 3);
+            this.panelForFigures.Location = new System.Drawing.Point(146, 3);
             this.panelForFigures.Name = "panelForFigures";
             this.panelForFigures.Padding = new System.Windows.Forms.Padding(9);
             this.panelForFigures.Size = new System.Drawing.Size(121, 75);
@@ -404,7 +367,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1076, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1076, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -415,7 +378,7 @@
             this.SaveToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // OpenToolStripMenuItem
@@ -439,7 +402,7 @@
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // toolTipNumDeg
@@ -457,9 +420,9 @@
             this.DrawPanel.BackColor = System.Drawing.Color.White;
             this.DrawPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DrawPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DrawPanel.Location = new System.Drawing.Point(0, 128);
+            this.DrawPanel.Location = new System.Drawing.Point(0, 126);
             this.DrawPanel.Name = "DrawPanel";
-            this.DrawPanel.Size = new System.Drawing.Size(1076, 635);
+            this.DrawPanel.Size = new System.Drawing.Size(1076, 637);
             this.DrawPanel.TabIndex = 4;
             this.DrawPanel.TabStop = false;
             this.DrawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseDown);
@@ -487,7 +450,6 @@
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.panelForFigures.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -534,11 +496,6 @@
         private System.Windows.Forms.Label labelWidth;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TrackBar trackBarLineWidth;
-
-        private System.Windows.Forms.Label labelBrush;
-        private System.Windows.Forms.Panel panel3;
-
-        private System.Windows.Forms.Button buttonBrush;
 
         private System.Windows.Forms.Button buttonPolygon;
         private System.Windows.Forms.Button buttonPolyline;
