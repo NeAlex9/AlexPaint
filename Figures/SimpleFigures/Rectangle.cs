@@ -10,23 +10,13 @@ namespace AlexPaint
     {
 
 
-        public override void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
+        public override void DrawFigure(Graphics g, Point clickedPoint, Pen myPen)
         {
             Points.Add(new Point(xStart, yStart));
-            Points.Add(new Point(e.X, yStart));
-            Points.Add(new Point(e.X, e.Y));
-            Points.Add(new Point(xStart, e.Y));
+            Points.Add(new Point(clickedPoint.X, yStart));
+            Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
+            Points.Add(new Point(xStart, clickedPoint.Y));
             g.DrawPolygon(myPen, Points.ToArray());
-        }
-
-        public override void Redraw(Graphics g, Pen myPen)
-        {
-
-        }
-
-        public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
-        {
-
         }
     }
 }

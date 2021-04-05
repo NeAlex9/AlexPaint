@@ -18,7 +18,6 @@ namespace AlexPaint
         {
             AllFigures = new List<Figure>();
             AllFigures.Add(new Line());
-            AllFigures.Add(new Brush());
             AllFigures.Add(new Ellipse());
             AllFigures.Add(new Polygone());
             AllFigures.Add(new Polyline());
@@ -34,10 +33,9 @@ namespace AlexPaint
                 if (AllFigures[i] is T && !(MyDrawingAssets.CurrentFigure is T))
                 {
                     MyDrawingAssets.CurrentFigure = AllFigures[i];
+                    return;
                 }
             }
         }
-                
-
     }
 }

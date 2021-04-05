@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.buttonRedo = new System.Windows.Forms.Button();
             this.buttonUndo = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -67,7 +66,6 @@
             this.DrawPanel = new System.Windows.Forms.PictureBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).BeginInit();
@@ -81,7 +79,6 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Controls.Add(this.numericUpDown1);
             this.panel2.Controls.Add(this.buttonRedo);
             this.panel2.Controls.Add(this.buttonUndo);
             this.panel2.Controls.Add(this.panel5);
@@ -93,25 +90,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1076, 98);
             this.panel2.TabIndex = 1;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(325, 7);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(60, 29);
-            this.numericUpDown1.TabIndex = 0;
-            this.toolTipNumDeg.SetToolTip(this.numericUpDown1, "количество углов в многоугольнике");
-            this.numericUpDown1.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
             // 
             // buttonRedo
             // 
@@ -149,7 +127,7 @@
             this.panel5.Controls.Add(this.buttonRed);
             this.panel5.Controls.Add(this.buttonGreen);
             this.panel5.Controls.Add(this.buttonPink);
-            this.panel5.Location = new System.Drawing.Point(613, 0);
+            this.panel5.Location = new System.Drawing.Point(568, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(237, 72);
             this.panel5.TabIndex = 13;
@@ -260,7 +238,7 @@
             // 
             this.panel4.Controls.Add(this.labelWidth);
             this.panel4.Controls.Add(this.trackBarLineWidth);
-            this.panel4.Location = new System.Drawing.Point(408, 3);
+            this.panel4.Location = new System.Drawing.Point(345, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(202, 72);
             this.panel4.TabIndex = 1;
@@ -437,7 +415,7 @@
             this.SaveToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 26);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // OpenToolStripMenuItem
@@ -461,7 +439,7 @@
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // toolTipNumDeg
@@ -505,9 +483,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).EndInit();
@@ -528,8 +504,6 @@
         private System.Windows.Forms.ToolTip toolTipCurColor;
 
         private System.Windows.Forms.ToolTip toolTipNumDeg;
-
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
 
         private System.Windows.Forms.Button buttonRedo;
         private System.Windows.Forms.Button buttonUndo;

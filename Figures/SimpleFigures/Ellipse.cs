@@ -7,27 +7,25 @@ namespace AlexPaint
 {
     public class Ellipse : BaseSimpleFigures
     {
-
-        public override void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
+        public override void DrawFigure(Graphics g, Point clickedPoint, Pen myPen)
         {
             int len = Points.Count;
-            if (xStart <= e.X && yStart <= e.Y)
+            if (xStart <= clickedPoint.X && yStart <= clickedPoint.Y)
             {
-                g.DrawEllipse(myPen, xStart, yStart, e.X - xStart, e.Y - yStart);
+                g.DrawEllipse(myPen, xStart, yStart, clickedPoint.X - xStart, clickedPoint.Y - yStart);
             }
-            else if (xStart > e.X && yStart <= e.Y)
+            else if (xStart > clickedPoint.X && yStart <= clickedPoint.Y)
             {
-                g.DrawEllipse(myPen, e.X, yStart, xStart - e.X, e.Y - yStart);
+                g.DrawEllipse(myPen, clickedPoint.X, yStart, xStart - clickedPoint.X, clickedPoint.Y - yStart);
             }
-            else if ((xStart <= e.X && yStart > e.Y))
+            else if ((xStart <= clickedPoint.X && yStart > clickedPoint.Y))
             {
-                g.DrawEllipse(myPen, xStart, e.Y, e.X - xStart, yStart - e.Y);
+                g.DrawEllipse(myPen, xStart, clickedPoint.Y, clickedPoint.X - xStart, yStart - clickedPoint.Y);
             }
-            else if (xStart > e.X && yStart > e.Y)
+            else if (xStart > clickedPoint.X && yStart > clickedPoint.Y)
             {
-                g.DrawEllipse(myPen, e.X, e.Y, xStart - e.X, yStart - e.Y);
+                g.DrawEllipse(myPen, clickedPoint.X, clickedPoint.Y, xStart - clickedPoint.X, yStart - clickedPoint.Y);
             }
         }
-
     }
 }

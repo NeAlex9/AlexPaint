@@ -7,42 +7,37 @@ namespace AlexPaint
 {
     public class Triangle : BaseSimpleFigures
     {
-
-        public override void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
+        public override void DrawFigure(Graphics g, Point clickedPoint, Pen myPen)
         {
-            if (yStart <= e.Y)
+            if (yStart <= clickedPoint.Y)
             {
-                Points.Add(new Point(xStart, e.Y));
-                Points.Add(new Point(e.X, e.Y));
-                if (xStart <= e.X)
+                Points.Add(new Point(xStart, clickedPoint.Y));
+                Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
+                if (xStart <= clickedPoint.X)
                 {
-                    Points.Add(new Point((e.X - xStart) / 2 + xStart, yStart));
+                    Points.Add(new Point((clickedPoint.X - xStart) / 2 + xStart, yStart));
                 }
                 else
                 {
-                    Points.Add(new Point((xStart - e.X) / 2 + e.X, yStart));
+                    Points.Add(new Point((xStart - clickedPoint.X) / 2 + clickedPoint.X, yStart));
                 }
                 g.DrawPolygon(myPen, Points.ToArray());
             }
             else
             {
                 Points.Add(new Point(xStart, yStart));
-                Points.Add(new Point(e.X, yStart));
-                if (xStart <= e.X)
+                Points.Add(new Point(clickedPoint.X, yStart));
+                if (xStart <= clickedPoint.X)
                 {
-                    Points.Add(new Point((e.X - xStart) / 2 + xStart, e.Y));
+                    Points.Add(new Point((clickedPoint.X - xStart) / 2 + xStart, clickedPoint.Y));
                 }
                 else
                 {
-                    Points.Add(new Point((xStart - e.X) / 2 + e.X, e.Y));
+                    Points.Add(new Point((xStart - clickedPoint.X) / 2 + clickedPoint.X, clickedPoint.Y));
                 }
                 g.DrawPolygon(myPen, Points.ToArray());
             }
         }
-
-
-    
-
     }
 
 }

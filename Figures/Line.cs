@@ -6,65 +6,46 @@ namespace AlexPaint
 {
     public class Line : Figure
     {
-        public Line()
+        public override void PrepareForDrawing(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets)
         {
-        }
-
-        public override void PrepareForDrawing(MouseEventArgs e, DrawingAssets assets)
-        {
-            if ((MouseButtons.Left & e.Button) != 0)
+            if ((MouseButtons.Left & clickedButton) != 0)
             {
-                Points.Add(new Point(e.X, e.Y));
+                Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
+                CanvasWithoutCurrentFigure = (Bitmap)assets.MainCanvas.Clone();
             }
         }
 
-        public override void DrawWhileMouseMove(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        public override void DrawWhileMouseMove(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets, PictureBox DrawPanel)
         {
-            if ((MouseButtons.Left & e.Button) != 0)
+            if ((MouseButtons.Left & clickedButton) != 0 && Points.Count > 0)
             {
                 Graphics g = Graphics.FromImage(assets.HelperCanvas);
                 g.Clear(Color.White);
                 g.DrawImage(assets.MainCanvas, 0, 0);
-                DrawFigure(g, e, assets.MyPen);
+                DrawFigure(g, clickedPoint, MyPen);
                 DrawPanel.Image = assets.HelperCanvas;
                 DrawPanel.Refresh();
             }
         }
 
-        public void DrawFigure(Graphics g, MouseEventArgs e, Pen myPen)
+        public void DrawFigure(Graphics g, Point clickedPoint, Pen myPen)
         {
             int len = Points.Count;
-            g.DrawLine(myPen, Points[len - 1].X, Points[len - 1].Y, e.X, e.Y);
+            g.DrawLine(myPen, Points[len - 1].X, Points[len - 1].Y, clickedPoint.X, clickedPoint.Y);
         }
 
-        public override void SetFigure(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        public override void SetFigure(Point clickedPoint, MouseButtons clickedButton, DrawingAssets assets, PictureBox DrawPanel)
         {
-            if ((MouseButtons.Left & e.Button) != 0)
+            if ((MouseButtons.Left & clickedButton) != 0 && Points.Count > 0)
             {
                 Graphics g = Graphics.FromImage(assets.MainCanvas);
-                DrawFigure(g, e, assets.MyPen);
+                DrawFigure(g, clickedPoint, MyPen);
                 DrawPanel.Image = assets.MainCanvas;
                 FinishPainting();    
             }
         }
 
-
-        public override void FinishPainting()
-        {
-            Points.Clear();
-        }
-
-        public override void Redraw(Graphics g, Pen myPen)
-        {
-
-        }
-
-        public override void BreakDraw(MouseEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
-        {
-            
-        }
-
-        public override void Reset(KeyPressEventArgs e, DrawingAssets assets, PictureBox DrawPanel)
+        public override void Redraw(Graphics g)
         {
 
         }
