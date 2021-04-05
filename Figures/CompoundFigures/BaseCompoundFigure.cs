@@ -21,7 +21,7 @@ namespace AlexPaint
 
         }
 
-        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
             Redraw(g);

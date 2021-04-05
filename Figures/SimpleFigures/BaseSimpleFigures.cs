@@ -26,25 +26,25 @@ namespace AlexPaint
             CanvasWithoutCurrentFigure = (Bitmap)assets.MainCanvas.Clone();
         }
 
-        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             Points.Clear();
-            DrawFigure(g, clickedPoint, MyPen);
+            DrawFigure(g, clickedPoint);
         }
 
-        public abstract void DrawFigure(Graphics g, Point clickedPoint, Pen myPen);
+        public abstract void DrawFigure(Graphics g, Point clickedPoint);
 
-        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
 
         }
 
-        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             if (xStart > 0 && yStart > 0)
             {
                 Points.Clear();
-                DrawFigure(g, clickedPoint, MyPen);
+                DrawFigure(g, clickedPoint);
                 FinishPainting();
             }
         }

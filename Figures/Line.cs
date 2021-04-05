@@ -12,30 +12,30 @@ namespace AlexPaint
             CanvasWithoutCurrentFigure = (Bitmap)assets.MainCanvas.Clone();
         }
 
-        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             if (Points.Count > 0)
             {
-                DrawFigure(g, clickedPoint, MyPen);
+                DrawFigure(g, clickedPoint);
             }
         }
 
-        public void DrawFigure(Graphics g, Point clickedPoint, Pen myPen)
+        public void DrawFigure(Graphics g, Point clickedPoint)
         {
             int len = Points.Count;
-            g.DrawLine(myPen, Points[len - 1].X, Points[len - 1].Y, clickedPoint.X, clickedPoint.Y);
+            g.DrawLine(MyPen, Points[len - 1].X, Points[len - 1].Y, clickedPoint.X, clickedPoint.Y);
         }
 
-        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             if (Points.Count > 0)
             {
-                DrawFigure(g, clickedPoint, MyPen);
+                DrawFigure(g, clickedPoint);
                 FinishPainting();
             }
         }
 
-        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
 
         }

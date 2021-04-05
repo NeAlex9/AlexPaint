@@ -7,7 +7,7 @@ namespace AlexPaint
 {
     public class Triangle : BaseSimpleFigures
     {
-        public override void DrawFigure(Graphics g, Point clickedPoint, Pen myPen)
+        public override void DrawFigure(Graphics g, Point clickedPoint)
         {
             if (yStart <= clickedPoint.Y)
             {
@@ -21,7 +21,7 @@ namespace AlexPaint
                 {
                     Points.Add(new Point((xStart - clickedPoint.X) / 2 + clickedPoint.X, yStart));
                 }
-                g.DrawPolygon(myPen, Points.ToArray());
+                g.DrawPolygon(MyPen, Points.ToArray());
             }
             else
             {
@@ -35,7 +35,7 @@ namespace AlexPaint
                 {
                     Points.Add(new Point((xStart - clickedPoint.X) / 2 + clickedPoint.X, clickedPoint.Y));
                 }
-                g.DrawPolygon(myPen, Points.ToArray());
+                g.DrawPolygon(MyPen, Points.ToArray());
             }
         }
     }

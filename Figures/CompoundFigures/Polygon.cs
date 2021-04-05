@@ -8,13 +8,13 @@ namespace AlexPaint
 {
     public class Polygone : BaseCompoundFigure
     {
-        private void FillFigure(Graphics g, List<Point> tempList, Pen myPen)
+        private void FillFigure(Graphics g, List<Point> tempList)
         {
             SolidBrush myBrush = new SolidBrush(Color.White);
             g.FillPolygon(myBrush, tempList.ToArray());
         }
 
-        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
             int len = Points.Count, round = 20;
@@ -24,13 +24,12 @@ namespace AlexPaint
                 Points[len - 1] = Points[0];
                 Redraw(g);
                 FinishPainting();
-                DrawPanel.Image = assets.MainCanvas;
                 return;
             }
             Redraw(g);
         }
 
-        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             Points.Add(new Point(Points[0].X, Points[0].Y));
             Redraw(g);
@@ -43,7 +42,7 @@ namespace AlexPaint
             {
                 g.Clear(Color.White);
                 g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
-                FillFigure(g, Points, MyPen);
+                FillFigure(g, Points);
                 for (int i = 0; i < Points.Count - 1; i++)
                 {
                     g.DrawLine(MyPen, Points[i], Points[i + 1]);
@@ -51,11 +50,11 @@ namespace AlexPaint
             }
         }
 
-        public override void BreakDraw(Graphics g, Point clickedPoint, DrawingAssets assets, PictureBox DrawPanel)
+        public override void BreakDraw(Graphics g, Point clickedPoint, DrawingAssets assets)
         {
             if (Points.Count > 0)
             {
-                RightMouseUpClick(g, clickedPoint, assets, DrawPanel);
+                RightMouseUpClick(g, clickedPoint, assets);
                 FinishPainting();
             }
 

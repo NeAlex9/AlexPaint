@@ -10,13 +10,13 @@ namespace AlexPaint
     {
 
 
-        public override void DrawFigure(Graphics g, Point clickedPoint, Pen myPen)
+        public override void DrawFigure(Graphics g, Point clickedPoint)
         {
             Points.Add(new Point(xStart, yStart));
             Points.Add(new Point(clickedPoint.X, yStart));
             Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
             Points.Add(new Point(xStart, clickedPoint.Y));
-            g.DrawPolygon(myPen, Points.ToArray());
+            g.DrawPolygon(MyPen, Points.ToArray());
         }
     }
 }
