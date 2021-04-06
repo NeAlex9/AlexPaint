@@ -23,11 +23,14 @@ namespace AlexPaint
 
         public override void Redraw(Graphics g)
         {
-            g.Clear(Color.White);
-            g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
-            for (int i = 0; i < Points.Count - 1; i++)
+            if (Points.Count > 0)
             {
-                g.DrawLine(MyPen, Points[i], Points[i + 1]);
+                g.Clear(Color.White);
+                g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
+                for (int i = 0; i < Points.Count - 1; i++)
+                {
+                    g.DrawLine(MyPen, Points[i], Points[i + 1]);
+                }
             }
         }
 
