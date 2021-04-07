@@ -8,15 +8,27 @@ namespace AlexPaint
 {
     public class Rectangle : BaseSimpleFigures
     {
-
-
-        public override void DrawFigure(Graphics g, Point clickedPoint)
+        private Rectangle(Rectangle source, Bitmap MainCanvas) : base(source, MainCanvas)
         {
-            Points.Add(new Point(xStart, yStart));
-            Points.Add(new Point(clickedPoint.X, yStart));
-            Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
-            Points.Add(new Point(xStart, clickedPoint.Y));
-            g.DrawPolygon(MyPen, Points.ToArray());
+            this.startPoint = source.startPoint;
+            this.endPoint = source.endPoint;
+        }
+
+        public Rectangle() { }        
+
+        public override void DrawFigure(Graphics g)
+        {
+            List<Point> temp = new List<Point>();
+            temp.Add(new Point(startPoint.X, startPoint.Y));
+            temp.Add(new Point(endPoint.X, startPoint.Y));
+            temp.Add(new Point(endPoint.X, endPoint.Y));
+            temp.Add(new Point(startPoint.X, endPoint.Y));
+            g.DrawPolygon(MyPen, temp.ToArray());
+        }
+
+        public override Figure Clone(Bitmap MainCanvas)
+        {
+            return new Rectangle(this, MainCanvas);
         }
     }
 }

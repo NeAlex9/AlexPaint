@@ -7,6 +7,7 @@
 // using System.Text;
 // using System.Threading.Tasks;
 
+using BaseFigure;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -28,43 +29,41 @@ namespace AlexPaint
 
         private void buttonRectangle_MouseDown(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+            myPaint.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Rectangle>();
         }
 
         private void buttonPolygon_MouseClick(object sender, MouseEventArgs e)
-        {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+        { 
+            myPaint.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Polygone>();
         }
 
         private void buttonEllipse_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+            
+            myPaint.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Ellipse>();
         }
 
         private void buttonTriangle_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+           
+            myPaint.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Triangle>();
         }
 
         private void buttonPolyline_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+            
+            myPaint.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Polyline>();
-        }
-
-        private void buttonBrush_MouseClick(object sender, MouseEventArgs e)
-        {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets);
-            myPaint.SetFigureForDraw<Brush>();
         }
         
         private void buttonLine_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.MyDrawingAssets.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas), new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+            
+            myPaint.CurrentFigure.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Line>();
         }
 
@@ -72,7 +71,7 @@ namespace AlexPaint
         {
             if ((MouseButtons.Left & e.Button) != 0)
             {
-                myPaint.MyDrawingAssets.CurrentFigure.PrepareForDrawing(new Point(e.X, e.Y), myPaint.MyDrawingAssets);
+                myPaint.CurrentFigure.PrepareForDrawing(new Point(e.X, e.Y), myPaint.MainCanvas);
             }
         }
 
@@ -80,11 +79,11 @@ namespace AlexPaint
         {
             if (MouseButtons.Left == e.Button)
             {
-                Graphics g = Graphics.FromImage(myPaint.MyDrawingAssets.HelperCanvas);
+                Graphics g = Graphics.FromImage(myPaint.HelperCanvas);
                 g.Clear(Color.White);
-                g.DrawImage(myPaint.MyDrawingAssets.CurrentFigure.CanvasWithoutCurrentFigure, 0, 0);
-                myPaint.MyDrawingAssets.CurrentFigure.DrawWhileMouseMove(g, new Point(e.X, e.Y), myPaint.MyDrawingAssets);
-                DrawPanel.Image = myPaint.MyDrawingAssets.HelperCanvas;
+                g.DrawImage(myPaint.CurrentFigure.CanvasWithoutCurrentFigure, 0, 0);
+                myPaint.CurrentFigure.DrawWhileMouseMove(g, new Point(e.X, e.Y));
+                DrawPanel.Image = myPaint.HelperCanvas;
                 DrawPanel.Refresh();
             }
         }
@@ -93,15 +92,28 @@ namespace AlexPaint
         {
             if (MouseButtons.Left == e.Button)
             {
-                Graphics g = Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas);
-                myPaint.MyDrawingAssets.CurrentFigure.LeftMouseUpClick(g, new Point(e.X, e.Y), myPaint.MyDrawingAssets);
-                DrawPanel.Image = myPaint.MyDrawingAssets.MainCanvas;
+                Graphics g = Graphics.FromImage(myPaint.MainCanvas);
+                myPaint.CurrentFigure.LeftMouseUpClick(g, new Point(e.X, e.Y));
+                if (myPaint.CurrentFigure.HadTheFigureDrawn)
+                {
+
+                    myPaint.MyHistory.AllDrawnFigures.Add(myPaint.CurrentFigure.Clone(myPaint.MainCanvas));
+                    myPaint.MyHistory.Pointer++;
+                    myPaint.CurrentFigure.FinishDrawning();
+                }
+                DrawPanel.Image = myPaint.MainCanvas;
             }
             if (MouseButtons.Right == e.Button)
             {
-                Graphics g = Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas);
-                myPaint.MyDrawingAssets.CurrentFigure.RightMouseUpClick(g, new Point(e.X, e.Y), myPaint.MyDrawingAssets);
-                DrawPanel.Image = myPaint.MyDrawingAssets.MainCanvas;
+                Graphics g = Graphics.FromImage(myPaint.MainCanvas);
+                myPaint.CurrentFigure.RightMouseUpClick(g, new Point(e.X, e.Y));
+                if (myPaint.CurrentFigure.HadTheFigureDrawn)
+                {
+                    myPaint.MyHistory.AllDrawnFigures.Add(myPaint.CurrentFigure.Clone(myPaint.MainCanvas));
+                    myPaint.MyHistory.Pointer++;
+                    myPaint.CurrentFigure.FinishDrawning();
+                }
+                DrawPanel.Image = myPaint.MainCanvas;
             }
         }  
 
@@ -111,12 +123,12 @@ namespace AlexPaint
             if (clickedButton != null)
             {
                 LabelCurColor.BackColor = clickedButton.BackColor;
-                myPaint.MyDrawingAssets.CurrentFigure.MyPen.Color = clickedButton.BackColor;
+                myPaint.CurrentFigure.MyPen.Color = clickedButton.BackColor;
                 for (int i = 0; i < myPaint.AllFigures.Count; i++)
                 {
                     myPaint.AllFigures[i].MyPen.Color = LabelCurColor.BackColor;
                 }
-                myPaint.MyDrawingAssets.CurrentFigure.Redraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas));
+                myPaint.CurrentFigure.Redraw(Graphics.FromImage(myPaint.MainCanvas));
                 DrawPanel.Refresh();
             }
         }
@@ -130,7 +142,7 @@ namespace AlexPaint
                 {
                     myPaint.AllFigures[i].MyPen.Width = scrolledTrack.Value;
                 }
-                myPaint.MyDrawingAssets.CurrentFigure.Redraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas));
+                myPaint.CurrentFigure.Redraw(Graphics.FromImage(myPaint.MainCanvas));
                 DrawPanel.Refresh();
             }
         }
@@ -144,7 +156,23 @@ namespace AlexPaint
             {
                 myPaint.AllFigures[i].MyPen.Color = LabelCurColor.BackColor;
             }
-            myPaint.MyDrawingAssets.CurrentFigure.Redraw(Graphics.FromImage(myPaint.MyDrawingAssets.MainCanvas));
+            myPaint.CurrentFigure.Redraw(Graphics.FromImage(myPaint.MainCanvas));
+            DrawPanel.Refresh();
+        }
+
+        private void buttonUndo_Click(object sender, EventArgs e)
+        {
+            myPaint.MyHistory.Pointer--;
+            Graphics g = Graphics.FromImage(myPaint.MainCanvas);
+            myPaint.MyHistory.DrawFigures(g);
+            DrawPanel.Refresh();
+        }
+
+        private void buttonRedo_Click(object sender, EventArgs e)
+        {
+            myPaint.MyHistory.Pointer++;
+            Graphics g = Graphics.FromImage(myPaint.MainCanvas);
+            myPaint.MyHistory.DrawFigures(g);
             DrawPanel.Refresh();
         }
     }

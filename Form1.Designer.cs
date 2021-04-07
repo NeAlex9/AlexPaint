@@ -98,6 +98,7 @@
             this.buttonRedo.Size = new System.Drawing.Size(36, 33);
             this.buttonRedo.TabIndex = 14;
             this.buttonRedo.UseVisualStyleBackColor = false;
+            this.buttonRedo.Click += new System.EventHandler(this.buttonRedo_Click);
             // 
             // buttonUndo
             // 
@@ -111,6 +112,7 @@
             this.buttonUndo.Size = new System.Drawing.Size(36, 33);
             this.buttonUndo.TabIndex = 11;
             this.buttonUndo.UseVisualStyleBackColor = false;
+            this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
             // 
             // panel5
             // 

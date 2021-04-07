@@ -6,43 +6,68 @@ namespace AlexPaint
 {
     public class Line : Figure
     {
-        public override void PrepareForDrawing(Point clickedPoint, DrawingAssets assets)
+        private Point startPoint;
+
+        private Point endPoint;
+
+        public Line() { }
+
+        private Line(Line source, Bitmap MainCanvas) : base(source, MainCanvas)
         {
-            Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
-            CanvasWithoutCurrentFigure = (Bitmap)assets.MainCanvas.Clone();
+            this.startPoint = source.startPoint;
+            this.endPoint = source.endPoint;
         }
 
-        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint, DrawingAssets assets)
+        public override void PrepareForDrawing(Point clickedPoint, Bitmap MainCanvas)
         {
-            if (Points.Count > 0)
+            HadTheFigureDrawn = false;
+            startPoint = new Point(clickedPoint.X, clickedPoint.Y);
+            CanvasWithoutCurrentFigure = MainCanvas;
+        }
+
+        public override void DrawWhileMouseMove(Graphics g, Point clickedPoint)
+        {
+            endPoint = clickedPoint;
+            DrawFigure(g);
+        }
+
+        public void DrawFigure(Graphics g)
+        {
+            g.DrawLine(MyPen, startPoint, endPoint);
+        }
+
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint)
+        {
+            endPoint = clickedPoint;
+            if ((startPoint.X == endPoint.X && startPoint.Y == endPoint.Y) || endPoint.X < 0 || endPoint.Y < 0)
             {
-                DrawFigure(g, clickedPoint);
+                return;
             }
-        }
 
-        public void DrawFigure(Graphics g, Point clickedPoint)
-        {
-            int len = Points.Count;
-            g.DrawLine(MyPen, Points[len - 1].X, Points[len - 1].Y, clickedPoint.X, clickedPoint.Y);
-        }
-
-        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
-        {
-            if (Points.Count > 0)
-            {
-                DrawFigure(g, clickedPoint);
-                FinishPainting();
-            }
-        }
-
-        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
-        {
+            DrawFigure(g);
+            HadTheFigureDrawn = true;
 
         }
 
         public override void Redraw(Graphics g)
         {
+            if ((startPoint.X == endPoint.X && startPoint.Y == endPoint.Y) || endPoint.X < 0 || endPoint.Y < 0)
+            {
+                return;
+            }
 
+            DrawFigure(g);
+        }
+
+        public override Figure Clone(Bitmap MainCanvas)
+        {
+            return new Line(this, MainCanvas);
+        }
+
+        public override void FinishDrawning()
+        {
+            endPoint.X = -1;
+            endPoint.Y = -1;
         }
     }
 }

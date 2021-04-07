@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Figures\CompoundFigures\BaseCompoundFigure.cs" />
+    <Compile Include="Figures\Figure.cs" />
     <Compile Include="Figures\SimpleFigures\BaseSimpleFigures.cs" />
     <Compile Include="Figures\SimpleFigures\Ellipse.cs" />
     <Compile Include="Figures\Line.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="History.cs" />
     <Compile Include="Paint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,12 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="BaseFigure\BaseFigureAndDrawingAssets.csproj">
-      <Project>{d0da3df5-31d1-4ed0-a9ea-7e5623ea1c8c}</Project>
-      <Name>BaseFigureAndDrawingAssets</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,13 +8,25 @@ namespace AlexPaint
 {
     public class Polygone : BaseCompoundFigure
     {
+        public Polygone() : base() { }
+
+        private Polygone(Polygone source, Bitmap MainCanvas) : base(source, MainCanvas)
+        {
+            List<Point> temp = new List<Point>();
+            for (int i = 0; i < source.Points.Count; i++)
+            {
+                temp.Add(source.Points[i]);
+            }
+            this.Points = temp;
+        }
+
         private void FillFigure(Graphics g, List<Point> tempList)
         {
             SolidBrush myBrush = new SolidBrush(Color.White);
             g.FillPolygon(myBrush, tempList.ToArray());
         }
 
-        public override void LeftMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
+        public override void LeftMouseUpClick(Graphics g, Point clickedPoint)
         {
             Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
             int len = Points.Count, round = 20;
@@ -23,17 +35,20 @@ namespace AlexPaint
             {
                 Points[len - 1] = Points[0];
                 Redraw(g);
-                FinishPainting();
+                HadTheFigureDrawn = true;
                 return;
             }
             Redraw(g);
         }
 
-        public override void RightMouseUpClick(Graphics g, Point clickedPoint, DrawingAssets assets)
+        public override void RightMouseUpClick(Graphics g, Point clickedPoint)
         {
-            Points.Add(new Point(Points[0].X, Points[0].Y));
-            Redraw(g);
-            FinishPainting();
+            if (Points.Count > 0)
+            {
+                Points.Add(new Point(Points[0].X, Points[0].Y));
+                Redraw(g);
+                HadTheFigureDrawn = true;
+            }
         }
 
         public override void Redraw(Graphics g)
@@ -50,14 +65,20 @@ namespace AlexPaint
             }
         }
 
-        public override void BreakDraw(Graphics g, Point clickedPoint, DrawingAssets assets)
+        public override void BreakDraw(Graphics g, Point clickedPoint)
         {
             if (Points.Count > 0)
             {
-                RightMouseUpClick(g, clickedPoint, assets);
-                FinishPainting();
+                RightMouseUpClick(g, clickedPoint);
+                HadTheFigureDrawn = true;
+                FinishDrawning();
             }
 
+        }
+
+        public override Figure Clone(Bitmap MainCanvas)
+        {
+            return new Polygone(this, MainCanvas);
         }
     }
 }

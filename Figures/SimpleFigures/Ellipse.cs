@@ -7,25 +7,37 @@ namespace AlexPaint
 {
     public class Ellipse : BaseSimpleFigures
     {
-        public override void DrawFigure(Graphics g, Point clickedPoint)
+        private Ellipse(Ellipse source, Bitmap MainCanvas) : base(source, MainCanvas)
         {
-            int len = Points.Count;
-            if (xStart <= clickedPoint.X && yStart <= clickedPoint.Y)
+            this.startPoint = source.startPoint;
+            this.endPoint = source.endPoint;
+        }
+
+        public Ellipse() { }
+
+        public override void DrawFigure(Graphics g)
+        {
+            if (startPoint.X <= endPoint.X && startPoint.Y <= endPoint.Y)
             {
-                g.DrawEllipse(MyPen, xStart, yStart, clickedPoint.X - xStart, clickedPoint.Y - yStart);
+                g.DrawEllipse(MyPen, startPoint.X, startPoint.Y, endPoint.X - startPoint.X, endPoint.Y - startPoint.Y);
             }
-            else if (xStart > clickedPoint.X && yStart <= clickedPoint.Y)
+            else if (startPoint.X > endPoint.X && startPoint.Y <= endPoint.Y)
             {
-                g.DrawEllipse(MyPen, clickedPoint.X, yStart, xStart - clickedPoint.X, clickedPoint.Y - yStart);
+                g.DrawEllipse(MyPen, endPoint.X, startPoint.Y, startPoint.X - endPoint.X, endPoint.Y - startPoint.Y);
             }
-            else if ((xStart <= clickedPoint.X && yStart > clickedPoint.Y))
+            else if ((startPoint.X <= endPoint.X && startPoint.Y > endPoint.Y))
             {
-                g.DrawEllipse(MyPen, xStart, clickedPoint.Y, clickedPoint.X - xStart, yStart - clickedPoint.Y);
+                g.DrawEllipse(MyPen, startPoint.X, endPoint.Y, endPoint.X - startPoint.X, startPoint.Y - endPoint.Y);
             }
-            else if (xStart > clickedPoint.X && yStart > clickedPoint.Y)
+            else if (startPoint.X > endPoint.X && startPoint.Y > endPoint.Y)
             {
-                g.DrawEllipse(MyPen, clickedPoint.X, clickedPoint.Y, xStart - clickedPoint.X, yStart - clickedPoint.Y);
+                g.DrawEllipse(MyPen, endPoint.X, endPoint.Y, startPoint.X - endPoint.X, startPoint.Y - endPoint.Y);
             }
+        }
+
+        public override Figure Clone(Bitmap MainCanvas)
+        {
+            return new Ellipse(this, MainCanvas);
         }
     }
 }

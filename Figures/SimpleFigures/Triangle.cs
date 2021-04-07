@@ -7,37 +7,53 @@ namespace AlexPaint
 {
     public class Triangle : BaseSimpleFigures
     {
-        public override void DrawFigure(Graphics g, Point clickedPoint)
+
+        public Triangle() {}
+
+        private Triangle(Triangle source, Bitmap MainCanvas) : base(source, MainCanvas)
         {
-            if (yStart <= clickedPoint.Y)
+            this.startPoint = source.startPoint;
+            this.endPoint = source.endPoint;
+        }
+
+        public override void DrawFigure(Graphics g)
+        {
+            List<Point> temp = new List<Point>();
+            if (startPoint.Y <= endPoint.Y)
             {
-                Points.Add(new Point(xStart, clickedPoint.Y));
-                Points.Add(new Point(clickedPoint.X, clickedPoint.Y));
-                if (xStart <= clickedPoint.X)
+                temp.Add(new Point(startPoint.X, endPoint.Y));
+                temp.Add(new Point(endPoint.X, endPoint.Y));
+                if (startPoint.X <= endPoint.X)
                 {
-                    Points.Add(new Point((clickedPoint.X - xStart) / 2 + xStart, yStart));
+                    temp.Add(new Point((endPoint.X - startPoint.X) / 2 + startPoint.X, startPoint.Y));
                 }
                 else
                 {
-                    Points.Add(new Point((xStart - clickedPoint.X) / 2 + clickedPoint.X, yStart));
+                    temp.Add(new Point((startPoint.X - endPoint.X) / 2 + endPoint.X, startPoint.Y));
                 }
-                g.DrawPolygon(MyPen, Points.ToArray());
+                g.DrawPolygon(MyPen, temp.ToArray());
             }
             else
             {
-                Points.Add(new Point(xStart, yStart));
-                Points.Add(new Point(clickedPoint.X, yStart));
-                if (xStart <= clickedPoint.X)
+                temp.Add(new Point(startPoint.X, startPoint.Y));
+                temp.Add(new Point(endPoint.X, startPoint.Y));
+                if (startPoint.X <= endPoint.X)
                 {
-                    Points.Add(new Point((clickedPoint.X - xStart) / 2 + xStart, clickedPoint.Y));
+                    temp.Add(new Point((endPoint.X - startPoint.X) / 2 + startPoint.X, endPoint.Y));
                 }
                 else
                 {
-                    Points.Add(new Point((xStart - clickedPoint.X) / 2 + clickedPoint.X, clickedPoint.Y));
+                    temp.Add(new Point((startPoint.X - endPoint.X) / 2 + endPoint.X, endPoint.Y));
                 }
-                g.DrawPolygon(MyPen, Points.ToArray());
+                g.DrawPolygon(MyPen, temp.ToArray());
             }
         }
+
+        public override Figure Clone(Bitmap MainCanvas)
+        {
+            return new Triangle(this, MainCanvas);
+        }
     }
+
 
 }
