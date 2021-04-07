@@ -97,7 +97,7 @@ namespace AlexPaint
                 if (myPaint.CurrentFigure.HadTheFigureDrawn)
                 {
 
-                    myPaint.MyHistory.AllDrawnFigures.Add(myPaint.CurrentFigure.Clone(myPaint.MainCanvas));
+                    myPaint.MyHistory.AddToAllDrawnFigures(myPaint.CurrentFigure.Clone(myPaint.MainCanvas));
                     myPaint.MyHistory.Pointer++;
                     myPaint.CurrentFigure.FinishDrawning();
                 }
@@ -109,7 +109,7 @@ namespace AlexPaint
                 myPaint.CurrentFigure.RightMouseUpClick(g, new Point(e.X, e.Y));
                 if (myPaint.CurrentFigure.HadTheFigureDrawn)
                 {
-                    myPaint.MyHistory.AllDrawnFigures.Add(myPaint.CurrentFigure.Clone(myPaint.MainCanvas));
+                    myPaint.MyHistory.AddToAllDrawnFigures(myPaint.CurrentFigure.Clone(myPaint.MainCanvas));
                     myPaint.MyHistory.Pointer++;
                     myPaint.CurrentFigure.FinishDrawning();
                 }

@@ -12,16 +12,17 @@ namespace AlexPaint
     {
         public History()
         {
-            AllDrawnFigures = new List<Figure>();
+            allDrawnFigures = new List<Figure>();
         }
 
         private int pointer = 0;
 
-        public int Pointer 
+        public int Pointer
         {
-            set 
+            set
             {
-                if (value > AllDrawnFigures.Count || value < 0)
+
+                if (value > allDrawnFigures.Count || value < 0)
                 {
                     return;
                 }
@@ -29,21 +30,38 @@ namespace AlexPaint
                 pointer = value;
             }
 
-            get 
+            get
             {
                 return pointer;
             }
         }
 
-        public List<Figure> AllDrawnFigures { set; get; }
+        private List<Figure> allDrawnFigures = new List<Figure>();
+
+        public void AddToAllDrawnFigures(Figure figure)
+        {
+            if (allDrawnFigures.Count != pointer)
+            {
+                Reset();
+            }
+
+            allDrawnFigures.Add(figure);
+        }
 
         public void DrawFigures(Graphics g)
         {
             g.Clear(Color.White);
             for (int i = 0; i < Pointer; i++)
             {
-                AllDrawnFigures[i].Redraw(g);
+                allDrawnFigures[i].Redraw(g);
             }
+        }
+
+        private void Reset()
+        {
+            int count = allDrawnFigures.Count - pointer;
+            allDrawnFigures.RemoveRange(pointer, count);
+            pointer = allDrawnFigures.Count;
         }
     }
 }
