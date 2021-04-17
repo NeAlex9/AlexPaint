@@ -58,7 +58,6 @@ namespace AlexPaint
             }
 
             DrawFigure(g);
-
         }
 
         public override void FinishDrawning()

@@ -205,6 +205,11 @@ namespace AlexPaint
                 myPaint.MyHistory.FiguresData = writer.Deserialize(reader.ReadToEnd());
                 myPaint.MyHistory.Pointer = myPaint.MyHistory.FiguresData.Count;
                 myPaint.MyHistory.DrawFigures(Graphics.FromImage(myPaint.MainCanvas), myPaint.AllFiguresDrawner);
+                for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
+                {
+                    myPaint.AllFiguresDrawner[i].MyPen.Color = LabelCurColor.BackColor;
+                    myPaint.AllFiguresDrawner[i].MyPen.Width = trackBarLineWidth.Value;
+                }
             }
             DrawPanel.Image = myPaint.MainCanvas;
         }

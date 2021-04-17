@@ -87,8 +87,7 @@ namespace AlexPaint
             var data = new FigureData();
             data.Points.Add(startPoint);
             data.Points.Add(endPoint);
-            Color color = Color.FromArgb(data.IntColor);
-            MyPen = new Pen(color, data.Width);
+            data.IntColor = MyPen.Color.ToArgb();
             data.Width = MyPen.Width;
             data.FigureType = this.GetType().ToString();
             return data;
