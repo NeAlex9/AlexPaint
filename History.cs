@@ -36,16 +36,16 @@ namespace AlexPaint
             }
         }
 
-        private List<Figure> allDrawnFigures = new List<Figure>();
+        private List<FigureData> allDrawnFigures = new List<FigureData>();
 
-        public void AddToAllDrawnFigures(Figure figure)
+        public void AddToAllDrawnFigures(FigureData data)
         {
             if (allDrawnFigures.Count != pointer)
             {
                 Reset();
             }
 
-            allDrawnFigures.Add(figure);
+            allDrawnFigures.Add(data);
         }
 
         public void DrawFigures(Graphics g)

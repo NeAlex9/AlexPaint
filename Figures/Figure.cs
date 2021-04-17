@@ -6,6 +6,20 @@ using System.Windows.Forms;
 
 namespace BaseFigure
 {
+    public class FigureData
+    { 
+        public List<Point> Points { get; set; }
+
+        public Color Color { get; set; }
+
+        public int Width { get; set; }
+
+        public FigureData()
+        {
+            Points = new List<Point>();
+        }
+    }
+
     public abstract class Figure
     {
         public Bitmap CanvasWithoutCurrentFigure { set; get; }
@@ -43,5 +57,9 @@ namespace BaseFigure
         public abstract Figure Clone(Bitmap MainCanvas); 
 
         public abstract void FinishDrawning();
-    }
+
+        public abstract void SetPointsForRedrawning(FigureData data);
+
+        public abstract void GetPointsForRedrawning(ref FigureData data);
+    
 }

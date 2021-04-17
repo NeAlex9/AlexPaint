@@ -42,5 +42,15 @@ namespace AlexPaint
         {
             Points.Clear();
         }
+
+        public override void SetPointsForRedrawning(FigureData data)
+        {
+            this.Points = new List<Point>(data.Points);
+        }
+
+        public override void GetPointsForRedrawning(ref FigureData data)
+        {
+            data.Points = new List<Point>(this.Points);
+        }
     }
 }

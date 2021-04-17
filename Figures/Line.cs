@@ -69,5 +69,17 @@ namespace AlexPaint
             endPoint.X = -1;
             endPoint.Y = -1;
         }
+
+        public override void SetPointsForRedrawning(FigureData data)
+        {
+            startPoint = data.Points[0];
+            endPoint = data.Points[1];
+        }
+
+        public override void GetPointsForRedrawning(ref FigureData data)
+        {
+            data.Points[0] = startPoint;
+            data.Points[1] = endPoint;
+        }
     }
 }
