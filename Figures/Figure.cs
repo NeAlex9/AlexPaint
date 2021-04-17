@@ -12,7 +12,7 @@ namespace BaseFigure
 
         public List<Point> Points { get; set; }
 
-        public Color Color { get; set; }
+        public int IntColor { get; set; }
 
         public float Width { get; set; }
 

@@ -71,7 +71,8 @@ namespace AlexPaint
         {
             startPoint = data.Points[0];
             endPoint = data.Points[1];
-            MyPen = new Pen(data.Color, data.Width);
+            Color color = Color.FromArgb(data.IntColor);
+            MyPen = new Pen(color, data.Width);
             MyPen.StartCap = LineCap.Round;
             MyPen.EndCap = LineCap.Round;
         }
@@ -81,7 +82,7 @@ namespace AlexPaint
             var data = new FigureData();
             data.Points.Add(startPoint); 
             data.Points.Add(endPoint);
-            data.Color = MyPen.Color;
+            data.IntColor = MyPen.Color.ToArgb();
             data.Width = MyPen.Width;
             data.FigureType = this.GetType().ToString();
             return data;

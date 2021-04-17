@@ -1,0 +1,210 @@
+[
+  {
+    "FigureType": "AlexPaint.Polygone",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 133,
+        "Y": 75
+      },
+      {
+        "IsEmpty": false,
+        "X": 196,
+        "Y": 373
+      },
+      {
+        "IsEmpty": false,
+        "X": 551,
+        "Y": 190
+      },
+      {
+        "IsEmpty": false,
+        "X": 133,
+        "Y": 75
+      }
+    ],
+    "IntColor": -16777216,
+    "Width": 1
+  },
+  {
+    "FigureType": "AlexPaint.Polygone",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 299,
+        "Y": 54
+      },
+      {
+        "IsEmpty": false,
+        "X": 118,
+        "Y": 371
+      },
+      {
+        "IsEmpty": false,
+        "X": 485,
+        "Y": 298
+      },
+      {
+        "IsEmpty": false,
+        "X": 61,
+        "Y": 180
+      },
+      {
+        "IsEmpty": false,
+        "X": 299,
+        "Y": 54
+      }
+    ],
+    "IntColor": -16777216,
+    "Width": 1
+  },
+  {
+    "FigureType": "AlexPaint.Rectangle",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 349,
+        "Y": 51
+      },
+      {
+        "IsEmpty": false,
+        "X": 630,
+        "Y": 289
+      }
+    ],
+    "IntColor": -16776961,
+    "Width": 11
+  },
+  {
+    "FigureType": "AlexPaint.Polyline",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 94,
+        "Y": 111
+      },
+      {
+        "IsEmpty": false,
+        "X": 202,
+        "Y": 447
+      },
+      {
+        "IsEmpty": false,
+        "X": 520,
+        "Y": 314
+      }
+    ],
+    "IntColor": -65536,
+    "Width": 16
+  },
+  {
+    "FigureType": "AlexPaint.Triangle",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 616,
+        "Y": 382
+      },
+      {
+        "IsEmpty": false,
+        "X": 628,
+        "Y": 409
+      }
+    ],
+    "IntColor": -65536,
+    "Width": 16
+  },
+  {
+    "FigureType": "AlexPaint.Polygone",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 788,
+        "Y": 173
+      },
+      {
+        "IsEmpty": false,
+        "X": 577,
+        "Y": 445
+      },
+      {
+        "IsEmpty": false,
+        "X": 1014,
+        "Y": 402
+      },
+      {
+        "IsEmpty": false,
+        "X": 479,
+        "Y": 186
+      },
+      {
+        "IsEmpty": false,
+        "X": 788,
+        "Y": 173
+      }
+    ],
+    "IntColor": -16777216,
+    "Width": 1
+  },
+  {
+    "FigureType": "AlexPaint.Triangle",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 440,
+        "Y": 351
+      },
+      {
+        "IsEmpty": false,
+        "X": 799,
+        "Y": 564
+      }
+    ],
+    "IntColor": -16711936,
+    "Width": 16
+  },
+  {
+    "FigureType": "AlexPaint.Ellipse",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 864,
+        "Y": 143
+      },
+      {
+        "IsEmpty": false,
+        "X": 1202,
+        "Y": 504
+      }
+    ],
+    "IntColor": -16711936,
+    "Width": 16
+  },
+  {
+    "FigureType": "AlexPaint.Polygone",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 761,
+        "Y": 83
+      },
+      {
+        "IsEmpty": false,
+        "X": 260,
+        "Y": 538
+      },
+      {
+        "IsEmpty": false,
+        "X": 1208,
+        "Y": 457
+      },
+      {
+        "IsEmpty": false,
+        "X": 761,
+        "Y": 83
+      }
+    ],
+    "IntColor": -256,
+    "Width": 16
+  }
+]

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using BaseFigure;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -10,25 +11,25 @@ namespace AlexPaint
 {
     class Serialization
     {
-        private string data;
-        public void Serialize(BaseFigure.Figure myPaint)
+        public string Serialize(List<FigureData> objectToSerialize)
         {
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true
             };
 
-            data = JsonSerializer.Serialize(myPaint, options);
+            return JsonSerializer.Serialize(objectToSerialize, options);
+
         }
 
-        public Paint Deserialize()
+        public List<FigureData> Deserialize(string data)
         {
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true
             };
 
-            return JsonSerializer.Deserialize<Paint>(data);
+            return JsonSerializer.Deserialize<List<FigureData>>(data);
         }
     }
 }

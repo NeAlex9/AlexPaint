@@ -9,8 +9,10 @@
 
 using BaseFigure;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
@@ -38,35 +40,35 @@ namespace AlexPaint
         }
 
         private void buttonPolygon_MouseClick(object sender, MouseEventArgs e)
-        { 
+        {
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Polygone>();
         }
 
         private void buttonEllipse_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Ellipse>();
         }
 
         private void buttonTriangle_MouseClick(object sender, MouseEventArgs e)
         {
-           
+
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Triangle>();
         }
 
         private void buttonPolyline_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Polyline>();
         }
-        
+
         private void buttonLine_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Line>();
         }
@@ -118,7 +120,7 @@ namespace AlexPaint
                 }
                 DrawPanel.Image = myPaint.MainCanvas;
             }
-        }  
+        }
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {
@@ -168,14 +170,6 @@ namespace AlexPaint
             myPaint.MyHistory.Pointer--;
             Graphics g = Graphics.FromImage(myPaint.MainCanvas);
             myPaint.MyHistory.DrawFigures(g, myPaint.AllFiguresDrawner);
-            /*for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
-            {
-                if (myPaint.AllFiguresDrawner[i] is Polygone)
-                {
-                    myPaint.CurrentFigureDrawner.CanvasWithoutCurrentFigure = (Bitmap)myPaint.MainCanvas.Clone();
-                    break;
-                }
-            }*/
             myPaint.CurrentFigureDrawner.MyPen.Color = LabelCurColor.BackColor;
             myPaint.CurrentFigureDrawner.MyPen.Width = trackBarLineWidth.Value;
             DrawPanel.Refresh();
@@ -186,14 +180,6 @@ namespace AlexPaint
             myPaint.MyHistory.Pointer++;
             Graphics g = Graphics.FromImage(myPaint.MainCanvas);
             myPaint.MyHistory.DrawFigures(g, myPaint.AllFiguresDrawner);
-            /*for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
-            {
-                if (myPaint.AllFiguresDrawner[i] is Polygone)
-                {
-                    myPaint.CurrentFigureDrawner.CanvasWithoutCurrentFigure = (Bitmap)myPaint.MainCanvas.Clone();
-                    break;
-                }
-            }*/
             myPaint.CurrentFigureDrawner.MyPen.Color = LabelCurColor.BackColor;
             myPaint.CurrentFigureDrawner.MyPen.Width = trackBarLineWidth.Value;
             DrawPanel.Refresh();
@@ -201,12 +187,26 @@ namespace AlexPaint
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saver.Serialize(myPaint.AllFiguresDrawner[0]);
+            Serialization saver = new Serialization();
+            var DrawnFiguresData = new List<FigureData>(myPaint.MyHistory.FiguresData);
+            int numFigures = myPaint.MyHistory.Pointer;
+            DrawnFiguresData.RemoveRange(numFigures, DrawnFiguresData.Count - numFigures);
+            using (StreamWriter writer = new StreamWriter(@"C:/Users/lehan/BSUIR/4 sem/ООТПиСП/Paint/AlexPaint/SerializedFigures.txt"))
+            {
+                writer.WriteLine(saver.Serialize(DrawnFiguresData));
+            }
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            myPaint = saver.Deserialize();
+            Serialization writer = new Serialization();
+            using (StreamReader reader = new StreamReader(@"C:/Users/lehan/BSUIR/4 sem/ООТПиСП/Paint/AlexPaint/SerializedFigures.txt"))
+            {
+                myPaint.MyHistory.FiguresData = writer.Deserialize(reader.ReadToEnd());
+                myPaint.MyHistory.Pointer = myPaint.MyHistory.FiguresData.Count;
+                myPaint.MyHistory.DrawFigures(Graphics.FromImage(myPaint.MainCanvas), myPaint.AllFiguresDrawner);
+            }
+            DrawPanel.Image = myPaint.MainCanvas;
         }
     }
 
