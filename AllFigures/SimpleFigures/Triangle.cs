@@ -1,20 +1,12 @@
 ﻿using BaseFigure;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 
-namespace AlexPaint
+namespace AllFigures
 {
     public class Triangle : BaseSimpleFigures
     {
-
         public Triangle() {}
-
-        private Triangle(Triangle source, Bitmap MainCanvas) : base(source, MainCanvas)
-        {
-            this.startPoint = source.startPoint;
-            this.endPoint = source.endPoint;
-        }
 
         public override void DrawFigure(Graphics g)
         {
@@ -48,12 +40,5 @@ namespace AlexPaint
                 g.DrawPolygon(MyPen, temp.ToArray());
             }
         }
-
-        public override Figure Clone(Bitmap MainCanvas)
-        {
-            return new Triangle(this, MainCanvas);
-        }
     }
-
-
 }

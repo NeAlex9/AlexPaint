@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AlexPaint
 {
-    class Serialization
+    public class Serialization
     {
         public string Serialize(List<FigureData> objectToSerialize)
         {

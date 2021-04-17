@@ -1,20 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using BaseFigure;
 
-namespace AlexPaint
+namespace AllFigures
 {
     public class Ellipse : BaseSimpleFigures
     {
-        private Ellipse(Ellipse source, Bitmap MainCanvas) : base(source, MainCanvas)
-        {
-            this.startPoint = source.startPoint;
-            this.endPoint = source.endPoint;
-        }
-
-        public Ellipse() { }
-
         public override void DrawFigure(Graphics g)
         {
             if (startPoint.X <= endPoint.X && startPoint.Y <= endPoint.Y)
@@ -33,11 +24,6 @@ namespace AlexPaint
             {
                 g.DrawEllipse(MyPen, endPoint.X, endPoint.Y, startPoint.X - endPoint.X, startPoint.Y - endPoint.Y);
             }
-        }
-
-        public override Figure Clone(Bitmap MainCanvas)
-        {
-            return new Ellipse(this, MainCanvas);
         }
     }
 }

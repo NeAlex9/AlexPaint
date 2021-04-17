@@ -1,46 +1,42 @@
 ﻿using BaseFigure;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AlexPaint
+namespace AllFigures
 {
-    public class Line : Figure
+    public abstract class BaseSimpleFigures : Figure
     {
-        private Point startPoint;
+        protected Point startPoint;
 
-        private Point endPoint;
+        protected Point endPoint;
 
-        public Line() { }
-
-        private Line(Line source, Bitmap MainCanvas) : base(source, MainCanvas)
-        {
-            this.startPoint = source.startPoint;
-            this.endPoint = source.endPoint;
-        }
+        public BaseSimpleFigures() { }
 
         public override void PrepareForDrawing(Point clickedPoint, Bitmap MainCanvas)
         {
             HadTheFigureDrawn = false;
-            startPoint = new Point(clickedPoint.X, clickedPoint.Y);
+            startPoint = clickedPoint;
+            endPoint.X = -1;
+            endPoint.Y = -1;
             CanvasWithoutCurrentFigure = MainCanvas;
         }
 
         public override void DrawWhileMouseMove(Graphics g, Point clickedPoint)
         {
-            endPoint = clickedPoint;
+            endPoint.X = clickedPoint.X;
+            endPoint.Y = clickedPoint.Y;
             DrawFigure(g);
         }
 
-        public void DrawFigure(Graphics g)
-        {
-            g.DrawLine(MyPen, startPoint, endPoint);
-        }
+        public abstract void DrawFigure(Graphics g);
 
         public override void LeftMouseUpClick(Graphics g, Point clickedPoint)
         {
-            endPoint = clickedPoint;
             if ((startPoint.X == endPoint.X && startPoint.Y == endPoint.Y) || endPoint.X < 0 || endPoint.Y < 0)
             {
                 return;
@@ -59,11 +55,6 @@ namespace AlexPaint
             }
 
             DrawFigure(g);
-        }
-
-        public override Figure Clone(Bitmap MainCanvas)
-        {
-            return new Line(this, MainCanvas);
         }
 
         public override void FinishDrawning()
@@ -85,7 +76,7 @@ namespace AlexPaint
         public override FigureData GetPointsForRedrawning()
         {
             var data = new FigureData();
-            data.Points.Add(startPoint);
+            data.Points.Add(startPoint); 
             data.Points.Add(endPoint);
             data.IntColor = MyPen.Color.ToArgb();
             data.Width = MyPen.Width;

@@ -4,8 +4,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Windows.Forms;
 using BaseFigure;
+using AllFigures;
+using Plugin;
 
 namespace AlexPaint
 {
@@ -26,8 +27,9 @@ namespace AlexPaint
             AllFiguresDrawner.Add(new Ellipse());
             AllFiguresDrawner.Add(new Polygone());
             AllFiguresDrawner.Add(new Polyline());
-            AllFiguresDrawner.Add(new Rectangle());
+            AllFiguresDrawner.Add(new AllFigures.Rectangle());
             AllFiguresDrawner.Add(new Triangle());
+            AllFiguresDrawner.Add(new Trapezoid());
             MainCanvas = new Bitmap(1920, 1080);
             HelperCanvas = new Bitmap(1920, 1080);
             CurrentFigureDrawner = AllFiguresDrawner[0];

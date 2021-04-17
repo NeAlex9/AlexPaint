@@ -1,90 +1,68 @@
 [
   {
-    "FigureType": "AlexPaint.Line",
+    "FigureType": "AllFigures.Polyline",
     "Points": [
       {
         "IsEmpty": false,
-        "X": 228,
-        "Y": 83
+        "X": 154,
+        "Y": 99
       },
       {
         "IsEmpty": false,
-        "X": 367,
-        "Y": 292
+        "X": 156,
+        "Y": 372
+      },
+      {
+        "IsEmpty": false,
+        "X": 584,
+        "Y": 349
       }
     ],
     "IntColor": -16777216,
     "Width": 1
   },
   {
-    "FigureType": "AlexPaint.Rectangle",
+    "FigureType": "AllFigures.Polygone",
     "Points": [
       {
         "IsEmpty": false,
-        "X": 399,
-        "Y": 107
+        "X": 110,
+        "Y": 147
       },
       {
         "IsEmpty": false,
-        "X": 604,
-        "Y": 335
-      }
-    ],
-    "IntColor": -16776961,
-    "Width": 6
-  },
-  {
-    "FigureType": "AlexPaint.Polygone",
-    "Points": [
-      {
-        "IsEmpty": false,
-        "X": 132,
-        "Y": 243
+        "X": 347,
+        "Y": 441
       },
       {
         "IsEmpty": false,
-        "X": 100,
-        "Y": 100
+        "X": 377,
+        "Y": 95
       },
       {
         "IsEmpty": false,
-        "X": 313,
-        "Y": 138
-      },
-      {
-        "IsEmpty": false,
-        "X": 132,
-        "Y": 243
-      }
-    ],
-    "IntColor": -65536,
-    "Width": 6
-  },
-  {
-    "FigureType": "AlexPaint.Polygone",
-    "Points": [
-      {
-        "IsEmpty": false,
-        "X": 687,
-        "Y": 88
-      },
-      {
-        "IsEmpty": false,
-        "X": 333,
-        "Y": 338
-      },
-      {
-        "IsEmpty": false,
-        "X": 688,
-        "Y": 431
-      },
-      {
-        "IsEmpty": false,
-        "X": 687,
-        "Y": 88
+        "X": 110,
+        "Y": 147
       }
     ],
     "IntColor": -16777216,
-    "Width": 6
+    "Width": 1
+  },
+  {
+    "FigureType": "AllFigures.Ellipse",
+    "Points": [
+      {
+        "IsEmpty": false,
+        "X": 361,
+        "Y": 61
+      },
+      {
+        "IsEmpty": false,
+        "X": 705,
+        "Y": 364
+      }
+    ],
+    "IntColor": -16777216,
+    "Width": 1
   }
 ]

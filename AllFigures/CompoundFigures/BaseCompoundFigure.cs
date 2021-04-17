@@ -6,15 +6,12 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace AlexPaint
+namespace AllFigures
 {
     public abstract class BaseCompoundFigure : Figure
     {
         public List<Point> Points { get; set; }
-
-        protected BaseCompoundFigure(Figure source, Bitmap MainCanvas) : base(source, MainCanvas) { }
 
         protected BaseCompoundFigure()
         {

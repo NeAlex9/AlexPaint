@@ -1,24 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using BaseFigure;
 
-namespace AlexPaint
+namespace AllFigures
 {
     public class Polygone : BaseCompoundFigure
     {
         public Polygone() : base() { }
-
-        private Polygone(Polygone source, Bitmap MainCanvas) : base(source, MainCanvas)
-        {
-            List<Point> temp = new List<Point>();
-            for (int i = 0; i < source.Points.Count; i++)
-            {
-                temp.Add(source.Points[i]);
-            }
-            this.Points = temp;
-        }
 
         private void FillFigure(Graphics g, List<Point> tempList)
         {
@@ -78,11 +67,6 @@ namespace AlexPaint
                 FinishDrawning();
             }
 
-        }
-
-        public override Figure Clone(Bitmap MainCanvas)
-        {
-            return new Polygone(this, MainCanvas);
         }
     }
 }

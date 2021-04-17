@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using BaseFigure;
 
-namespace AlexPaint
+namespace AllFigures
+
 {
     public class Polyline : BaseCompoundFigure
     {
         public Polyline() : base() { }
-
-        protected Polyline(Polyline source, Bitmap MainCanvas) : base(source, MainCanvas)
-        {
-            List<Point> temp = new List<Point>();
-            for (int i = 0; i < source.Points.Count; i++)
-            {
-                temp.Add(source.Points[i]);
-            }
-            this.Points = temp;
-        }
 
         public override void RightMouseUpClick(Graphics g, Point clickedPoint)
         {
@@ -50,11 +40,6 @@ namespace AlexPaint
             {
                 HadTheFigureDrawn = true;
             }
-        }
-
-        public override Figure Clone(Bitmap MainCanvas)
-        {
-            return new Polyline(this, MainCanvas);
         }
     }
 }

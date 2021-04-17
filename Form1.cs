@@ -1,13 +1,7 @@
-﻿// using System;
-// using System.Collections.Generic;
-// using System.ComponentModel;
-// using System.Data;
-// using System.Drawing;
-// using System.Linq;
-// using System.Text;
-// using System.Threading.Tasks;
-
+﻿using AlexPaint;
+using AllFigures;
 using BaseFigure;
+using Plugin;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,7 +10,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
-namespace AlexPaint
+namespace GIUAndForms
 {
     public partial class Form1 : Form
     {
@@ -36,7 +30,7 @@ namespace AlexPaint
         private void buttonRectangle_MouseDown(object sender, MouseEventArgs e)
         {
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<Rectangle>();
+            myPaint.SetFigureForDraw<AllFigures.Rectangle>();
         }
 
         private void buttonPolygon_MouseClick(object sender, MouseEventArgs e)
@@ -68,9 +62,14 @@ namespace AlexPaint
 
         private void buttonLine_MouseClick(object sender, MouseEventArgs e)
         {
-
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
             myPaint.SetFigureForDraw<Line>();
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
+            myPaint.SetFigureForDraw<Trapezoid>();
         }
 
         private void DrawPanel_MouseDown(object sender, MouseEventArgs e)
@@ -173,6 +172,11 @@ namespace AlexPaint
             myPaint.CurrentFigureDrawner.MyPen.Color = LabelCurColor.BackColor;
             myPaint.CurrentFigureDrawner.MyPen.Width = trackBarLineWidth.Value;
             DrawPanel.Refresh();
+            for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
+            {
+                myPaint.AllFiguresDrawner[i].MyPen.Color = LabelCurColor.BackColor;
+                myPaint.AllFiguresDrawner[i].MyPen.Width = trackBarLineWidth.Value;
+            }
         }
 
         private void buttonRedo_Click(object sender, EventArgs e)
@@ -183,6 +187,11 @@ namespace AlexPaint
             myPaint.CurrentFigureDrawner.MyPen.Color = LabelCurColor.BackColor;
             myPaint.CurrentFigureDrawner.MyPen.Width = trackBarLineWidth.Value;
             DrawPanel.Refresh();
+            for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
+            {
+                myPaint.AllFiguresDrawner[i].MyPen.Color = LabelCurColor.BackColor;
+                myPaint.AllFiguresDrawner[i].MyPen.Width = trackBarLineWidth.Value;
+            }
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)

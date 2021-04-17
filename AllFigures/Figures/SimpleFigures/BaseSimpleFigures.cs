@@ -6,17 +6,14 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace AlexPaint
+namespace AllFigures
 {
     public abstract class BaseSimpleFigures : Figure
     {
         protected Point startPoint;
 
         protected Point endPoint;
-
-        protected BaseSimpleFigures(Figure source, Bitmap MainCanvas) : base(source, MainCanvas) { }
 
         public BaseSimpleFigures() { }
 

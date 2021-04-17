@@ -1,4 +1,4 @@
-﻿namespace AlexPaint
+﻿namespace GIUAndForms
 {
     partial class Form1
     {
@@ -46,6 +46,7 @@
             this.labelWidth = new System.Windows.Forms.Label();
             this.trackBarLineWidth = new System.Windows.Forms.TrackBar();
             this.panelForFigures = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonPolyline = new System.Windows.Forms.Button();
             this.buttonPolygon = new System.Windows.Forms.Button();
             this.buttonEllipse = new System.Windows.Forms.Button();
@@ -60,8 +61,8 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipNumDeg = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipCurColor = new System.Windows.Forms.ToolTip(this.components);
-            this.DrawPanel = new System.Windows.Forms.PictureBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.DrawPanel = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -124,7 +125,7 @@
             this.panel5.Controls.Add(this.buttonRed);
             this.panel5.Controls.Add(this.buttonGreen);
             this.panel5.Controls.Add(this.buttonPink);
-            this.panel5.Location = new System.Drawing.Point(511, 0);
+            this.panel5.Location = new System.Drawing.Point(561, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(237, 72);
             this.panel5.TabIndex = 13;
@@ -235,7 +236,7 @@
             // 
             this.panel4.Controls.Add(this.labelWidth);
             this.panel4.Controls.Add(this.trackBarLineWidth);
-            this.panel4.Location = new System.Drawing.Point(285, 3);
+            this.panel4.Location = new System.Drawing.Point(335, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(202, 72);
             this.panel4.TabIndex = 1;
@@ -264,6 +265,7 @@
             // panelForFigures
             // 
             this.panelForFigures.BackColor = System.Drawing.Color.White;
+            this.panelForFigures.Controls.Add(this.button1);
             this.panelForFigures.Controls.Add(this.buttonPolyline);
             this.panelForFigures.Controls.Add(this.buttonPolygon);
             this.panelForFigures.Controls.Add(this.buttonEllipse);
@@ -273,8 +275,22 @@
             this.panelForFigures.Location = new System.Drawing.Point(146, 3);
             this.panelForFigures.Name = "panelForFigures";
             this.panelForFigures.Padding = new System.Windows.Forms.Padding(9);
-            this.panelForFigures.Size = new System.Drawing.Size(121, 75);
+            this.panelForFigures.Size = new System.Drawing.Size(160, 75);
             this.panelForFigures.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.AllowDrop = true;
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = global::GIUAndForms.Properties.Resources.free_icon_trapeze_26282261;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(119, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 33);
+            this.button1.TabIndex = 11;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // buttonPolyline
             // 
@@ -297,7 +313,7 @@
             this.buttonPolygon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPolygon.BackgroundImage")));
             this.buttonPolygon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonPolygon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPolygon.Location = new System.Drawing.Point(80, 3);
+            this.buttonPolygon.Location = new System.Drawing.Point(3, 39);
             this.buttonPolygon.Name = "buttonPolygon";
             this.buttonPolygon.Size = new System.Drawing.Size(36, 33);
             this.buttonPolygon.TabIndex = 8;
@@ -311,7 +327,7 @@
             this.buttonEllipse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEllipse.BackgroundImage")));
             this.buttonEllipse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEllipse.Location = new System.Drawing.Point(3, 39);
+            this.buttonEllipse.Location = new System.Drawing.Point(77, 3);
             this.buttonEllipse.Name = "buttonEllipse";
             this.buttonEllipse.Size = new System.Drawing.Size(36, 33);
             this.buttonEllipse.TabIndex = 7;
@@ -386,20 +402,20 @@
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.OpenToolStripMenuItem.Text = "Открыть";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.SaveToolStripMenuItem.Text = "Сохранить";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.ExitToolStripMenuItem.Text = "Выход";
             // 
             // оПрограммеToolStripMenuItem
@@ -418,6 +434,10 @@
             this.toolTipCurColor.BackColor = System.Drawing.Color.White;
             this.toolTipCurColor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             // 
+            // colorDialog
+            // 
+            this.colorDialog.SolidColorOnly = true;
+            // 
             // DrawPanel
             // 
             this.DrawPanel.BackColor = System.Drawing.Color.White;
@@ -431,10 +451,6 @@
             this.DrawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseDown);
             this.DrawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseMove);
             this.DrawPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPanel_MouseUp);
-            // 
-            // colorDialog
-            // 
-            this.colorDialog.SolidColorOnly = true;
             // 
             // Form1
             // 
@@ -517,5 +533,6 @@
         #endregion
 
         private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.Button button1;
     }
 }
