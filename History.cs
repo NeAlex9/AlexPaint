@@ -12,7 +12,7 @@ namespace AlexPaint
     {
         public History()
         {
-            allDrawnFigures = new List<Figure>();
+            FiguresData = new List<FigureData>();
         }
 
         private int pointer = 0;
@@ -22,7 +22,7 @@ namespace AlexPaint
             set
             {
 
-                if (value > allDrawnFigures.Count || value < 0)
+                if (value > FiguresData.Count || value < 0)
                 {
                     return;
                 }
@@ -36,32 +36,40 @@ namespace AlexPaint
             }
         }
 
-        private List<FigureData> allDrawnFigures = new List<FigureData>();
+        public List<FigureData> FiguresData = new List<FigureData>();
 
         public void AddToAllDrawnFigures(FigureData data)
         {
-            if (allDrawnFigures.Count != pointer)
+            if (FiguresData.Count != pointer)
             {
                 Reset();
             }
 
-            allDrawnFigures.Add(data);
+            FiguresData.Add(data);
         }
 
-        public void DrawFigures(Graphics g)
+        public void DrawFigures(Graphics g, List<Figure> allFigureDrawner)
         {
             g.Clear(Color.White);
-            for (int i = 0; i < Pointer; i++)
+            for (int i = 0; i < Pointer; i++)      
             {
-                allDrawnFigures[i].Redraw(g);
+                for (int j = 0; j < allFigureDrawner.Count; j++)
+                {
+                    if (FiguresData[i].FigureType == allFigureDrawner[j].GetType().ToString())
+                    {
+                        allFigureDrawner[j].Redraw(g, FiguresData[i]);
+                        allFigureDrawner[j].FinishDrawning();
+                        break;
+                    }
+                }
             }
         }
 
         private void Reset()
         {
-            int count = allDrawnFigures.Count - pointer;
-            allDrawnFigures.RemoveRange(pointer, count);
-            pointer = allDrawnFigures.Count;
+            int count = FiguresData.Count - pointer;
+            FiguresData.RemoveRange(pointer, count);
+            pointer = FiguresData.Count;
         }
     }
 }

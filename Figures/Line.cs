@@ -1,5 +1,7 @@
 ﻿using BaseFigure;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace AlexPaint
@@ -74,12 +76,20 @@ namespace AlexPaint
         {
             startPoint = data.Points[0];
             endPoint = data.Points[1];
+            MyPen = new Pen(data.Color, data.Width);
+            MyPen.StartCap = LineCap.Round;
+            MyPen.EndCap = LineCap.Round;
         }
 
-        public override void GetPointsForRedrawning(ref FigureData data)
+        public override FigureData GetPointsForRedrawning()
         {
-            data.Points[0] = startPoint;
-            data.Points[1] = endPoint;
+            var data = new FigureData();
+            data.Points.Add(startPoint);
+            data.Points.Add(endPoint);
+            data.Color = MyPen.Color;
+            data.Width = MyPen.Width;
+            data.FigureType = this.GetType().ToString();
+            return data;
         }
     }
 }

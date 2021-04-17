@@ -7,12 +7,14 @@ using System.Windows.Forms;
 namespace BaseFigure
 {
     public class FigureData
-    { 
+    {
+        public string FigureType { get; set; }
+
         public List<Point> Points { get; set; }
 
         public Color Color { get; set; }
 
-        public int Width { get; set; }
+        public float Width { get; set; }
 
         public FigureData()
         {
@@ -52,14 +54,20 @@ namespace BaseFigure
 
         public virtual void Redraw(Graphics g) { }
 
+        public void Redraw(Graphics g, FigureData data)
+        {
+            SetPointsForRedrawning(data);
+            Redraw(g);
+        }
+
         public virtual void BreakDraw(Graphics g, Point clickedPoint) { }
 
-        public abstract Figure Clone(Bitmap MainCanvas); 
+        public abstract Figure Clone(Bitmap MainCanvas);
 
         public abstract void FinishDrawning();
 
         public abstract void SetPointsForRedrawning(FigureData data);
 
-        public abstract void GetPointsForRedrawning(ref FigureData data);
-    
+        public abstract FigureData GetPointsForRedrawning();
+    }
 }

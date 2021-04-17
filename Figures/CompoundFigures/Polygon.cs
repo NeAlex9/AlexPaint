@@ -34,10 +34,14 @@ namespace AlexPaint
                             (Points[0].Y - round < Points[len - 1].Y && Points[0].Y + round > Points[len - 1].Y))
             {
                 Points[len - 1] = Points[0];
+                g.Clear(Color.White);
+                g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
                 Redraw(g);
                 HadTheFigureDrawn = true;
                 return;
             }
+            g.Clear(Color.White);
+            g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
             Redraw(g);
         }
 
@@ -46,6 +50,8 @@ namespace AlexPaint
             if (Points.Count > 0)
             {
                 Points.Add(new Point(Points[0].X, Points[0].Y));
+                g.Clear(Color.White);
+                g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
                 Redraw(g);
                 HadTheFigureDrawn = true;
             }
@@ -55,8 +61,6 @@ namespace AlexPaint
         {
             if (Points.Count > 0)
             {
-                g.Clear(Color.White);
-                g.DrawImage(CanvasWithoutCurrentFigure, 0, 0);
                 FillFigure(g, Points);
                 for (int i = 0; i < Points.Count - 1; i++)
                 {

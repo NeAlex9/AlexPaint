@@ -9,8 +9,6 @@ using BaseFigure;
 
 namespace AlexPaint
 {
-
-
     public class Paint
     {
         public Bitmap MainCanvas { get; set; }

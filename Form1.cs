@@ -100,8 +100,7 @@ namespace AlexPaint
                 myPaint.CurrentFigureDrawner.LeftMouseUpClick(g, new Point(e.X, e.Y));
                 if (myPaint.CurrentFigureDrawner.HadTheFigureDrawn)
                 {
-
-                    myPaint.MyHistory.AddToAllDrawnFigures(myPaint.CurrentFigureDrawner.Clone(myPaint.MainCanvas));
+                    myPaint.MyHistory.AddToAllDrawnFigures(myPaint.CurrentFigureDrawner.GetPointsForRedrawning());
                     myPaint.MyHistory.Pointer++;
                     myPaint.CurrentFigureDrawner.FinishDrawning();
                 }
@@ -113,7 +112,7 @@ namespace AlexPaint
                 myPaint.CurrentFigureDrawner.RightMouseUpClick(g, new Point(e.X, e.Y));
                 if (myPaint.CurrentFigureDrawner.HadTheFigureDrawn)
                 {
-                    myPaint.MyHistory.AddToAllDrawnFigures(myPaint.CurrentFigureDrawner.Clone(myPaint.MainCanvas));
+                    myPaint.MyHistory.AddToAllDrawnFigures(myPaint.CurrentFigureDrawner.GetPointsForRedrawning());
                     myPaint.MyHistory.Pointer++;
                     myPaint.CurrentFigureDrawner.FinishDrawning();
                 }
@@ -168,7 +167,17 @@ namespace AlexPaint
         {
             myPaint.MyHistory.Pointer--;
             Graphics g = Graphics.FromImage(myPaint.MainCanvas);
-            myPaint.MyHistory.DrawFigures(g);
+            myPaint.MyHistory.DrawFigures(g, myPaint.AllFiguresDrawner);
+            /*for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
+            {
+                if (myPaint.AllFiguresDrawner[i] is Polygone)
+                {
+                    myPaint.CurrentFigureDrawner.CanvasWithoutCurrentFigure = (Bitmap)myPaint.MainCanvas.Clone();
+                    break;
+                }
+            }*/
+            myPaint.CurrentFigureDrawner.MyPen.Color = LabelCurColor.BackColor;
+            myPaint.CurrentFigureDrawner.MyPen.Width = trackBarLineWidth.Value;
             DrawPanel.Refresh();
         }
 
@@ -176,7 +185,17 @@ namespace AlexPaint
         {
             myPaint.MyHistory.Pointer++;
             Graphics g = Graphics.FromImage(myPaint.MainCanvas);
-            myPaint.MyHistory.DrawFigures(g);
+            myPaint.MyHistory.DrawFigures(g, myPaint.AllFiguresDrawner);
+            /*for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
+            {
+                if (myPaint.AllFiguresDrawner[i] is Polygone)
+                {
+                    myPaint.CurrentFigureDrawner.CanvasWithoutCurrentFigure = (Bitmap)myPaint.MainCanvas.Clone();
+                    break;
+                }
+            }*/
+            myPaint.CurrentFigureDrawner.MyPen.Color = LabelCurColor.BackColor;
+            myPaint.CurrentFigureDrawner.MyPen.Width = trackBarLineWidth.Value;
             DrawPanel.Refresh();
         }
 
