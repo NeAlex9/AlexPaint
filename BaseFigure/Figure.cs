@@ -34,6 +34,7 @@ namespace BaseFigure
             MyPen = new Pen(Color.Black, 1);
             MyPen.StartCap = LineCap.Round;
             MyPen.EndCap = LineCap.Round;
+            CanvasWithoutCurrentFigure = new Bitmap(1920, 1080);
         }
 
         public abstract void PrepareForDrawing(Point clickedPoint, Bitmap MainCanvas);
