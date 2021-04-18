@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
@@ -66,10 +67,24 @@ namespace GIUAndForms
             myPaint.SetFigureForDraw<Line>();
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        private void buttonTrapeziod_MouseClick(object sender, MouseEventArgs e)
         {
-            myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<Trapezoid>();
+            try
+            {
+                Assembly asm = Assembly.LoadFrom(@"Plugin.dll");
+                Type t = asm.GetType("Plugin.Trapezoid", true, true);
+                Figure obj = Activator.CreateInstance(t) as Figure;
+                if (!(obj is null))
+                {
+                    myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
+                    myPaint.AllFiguresDrawner.Add(obj);
+                    myPaint.SetFigureForDraw<Trapezoid>();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Can't downlod plugin");
+            }
         }
 
         private void DrawPanel_MouseDown(object sender, MouseEventArgs e)
