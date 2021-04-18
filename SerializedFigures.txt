@@ -1,68 +1,53 @@
 [
   {
-    "FigureType": "AllFigures.Polyline",
+    "FigureType": "AllFigures.Line",
     "Points": [
       {
         "IsEmpty": false,
-        "X": 154,
-        "Y": 99
+        "X": 214,
+        "Y": 121
       },
       {
         "IsEmpty": false,
-        "X": 156,
-        "Y": 372
-      },
-      {
-        "IsEmpty": false,
-        "X": 584,
-        "Y": 349
+        "X": 416,
+        "Y": 301
       }
     ],
     "IntColor": -16777216,
     "Width": 1
   },
   {
-    "FigureType": "AllFigures.Polygone",
+    "FigureType": "AllFigures.Line",
     "Points": [
       {
         "IsEmpty": false,
-        "X": 110,
-        "Y": 147
+        "X": 337,
+        "Y": 91
       },
       {
         "IsEmpty": false,
-        "X": 347,
-        "Y": 441
-      },
+        "X": 295,
+        "Y": 331
+      }
+    ],
+    "IntColor": -16777216,
+    "Width": 6
+  },
+  {
+    "FigureType": "Plugin.Trapezoid",
+    "Points": [
       {
         "IsEmpty": false,
-        "X": 377,
+        "X": 427,
         "Y": 95
       },
       {
         "IsEmpty": false,
-        "X": 110,
-        "Y": 147
+        "X": 564,
+        "Y": 227
       }
     ],
-    "IntColor": -16777216,
-    "Width": 1
-  },
-  {
-    "FigureType": "AllFigures.Ellipse",
-    "Points": [
-      {
-        "IsEmpty": false,
-        "X": 361,
-        "Y": 61
-      },
-      {
-        "IsEmpty": false,
-        "X": 705,
-        "Y": 364
-      }
-    ],
-    "IntColor": -16777216,
-    "Width": 1
+    "IntColor": -16776961,
+    "Width": 6
   }
 ]

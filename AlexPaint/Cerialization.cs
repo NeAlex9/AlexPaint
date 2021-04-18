@@ -24,12 +24,19 @@ namespace AlexPaint
 
         public List<FigureData> Deserialize(string data)
         {
-            var options = new JsonSerializerOptions
+            try
             {
-                WriteIndented = true
-            };
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                };
 
-            return JsonSerializer.Deserialize<List<FigureData>>(data);
+                return JsonSerializer.Deserialize<List<FigureData>>(data);
+            }
+            catch
+            {
+                return new List<FigureData>();
+            }
         }
     }
 }

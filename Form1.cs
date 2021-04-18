@@ -196,32 +196,51 @@ namespace GIUAndForms
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Serialization saver = new Serialization();
-            var DrawnFiguresData = new List<FigureData>(myPaint.MyHistory.FiguresData);
-            int numFigures = myPaint.MyHistory.Pointer;
-            DrawnFiguresData.RemoveRange(numFigures, DrawnFiguresData.Count - numFigures);
-            using (StreamWriter writer = new StreamWriter(@"C:/Users/lehan/BSUIR/4 sem/ООТПиСП/Paint/AlexPaint/SerializedFigures.txt"))
+            try
             {
-                writer.WriteLine(saver.Serialize(DrawnFiguresData));
+                if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+                Serialization saver = new Serialization();
+                var DrawnFiguresData = new List<FigureData>(myPaint.MyHistory.FiguresData);
+                int numFigures = myPaint.MyHistory.Pointer;
+                DrawnFiguresData.RemoveRange(numFigures, DrawnFiguresData.Count - numFigures);
+                using (StreamWriter writer = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    writer.WriteLine(saver.Serialize(DrawnFiguresData));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло  так ):");
             }
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Serialization writer = new Serialization();
-            using (StreamReader reader = new StreamReader(@"C:/Users/lehan/BSUIR/4 sem/ООТПиСП/Paint/AlexPaint/SerializedFigures.txt"))
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                myPaint.MyHistory.FiguresData = writer.Deserialize(reader.ReadToEnd());
-                myPaint.MyHistory.Pointer = myPaint.MyHistory.FiguresData.Count;
-                myPaint.MyHistory.DrawFigures(Graphics.FromImage(myPaint.MainCanvas), myPaint.AllFiguresDrawner);
-                for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
-                {
-                    myPaint.AllFiguresDrawner[i].MyPen.Color = LabelCurColor.BackColor;
-                    myPaint.AllFiguresDrawner[i].MyPen.Width = trackBarLineWidth.Value;
-                }
-            }
-            DrawPanel.Image = myPaint.MainCanvas;
-        }
-    }
 
+                Serialization writer = new Serialization();
+                using (StreamReader reader = new StreamReader(openFileDialog1.FileName))
+                {
+                    myPaint.MyHistory.FiguresData = writer.Deserialize(reader.ReadToEnd());
+                    myPaint.MyHistory.Pointer = myPaint.MyHistory.FiguresData.Count;
+                    myPaint.MyHistory.DrawFigures(Graphics.FromImage(myPaint.MainCanvas), myPaint.AllFiguresDrawner);
+                    for (int i = 0; i < myPaint.AllFiguresDrawner.Count; i++)
+                    {
+                        myPaint.AllFiguresDrawner[i].MyPen.Color = LabelCurColor.BackColor;
+                        myPaint.AllFiguresDrawner[i].MyPen.Width = trackBarLineWidth.Value;
+                    }
+                }
+                DrawPanel.Image = myPaint.MainCanvas;
+
+
+            }
+        }
+
+
+    }
 }
