@@ -26,50 +26,71 @@ namespace GIUAndForms
             saver = new Serialization();
             SaveToolStripMenuItem.Click += new EventHandler(SaveToolStripMenuItem_Click);
             KeyPreview = true;
+
+        }
+
+        public void DownloadPlugin(string libName, string buttonTypeName, string FigureTypeName, AlexPaint.Paint paint)
+        {
+            try
+            {
+                Assembly asm = Assembly.LoadFrom(libName);
+                object[] parameters = new object[] { paint, new Size(27, 27), new Point(89, 2), @"trapeze.png" };
+                Type type = asm.GetType(buttonTypeName);
+                Button obj = Activator.CreateInstance(type, parameters) as Button;
+                obj.BringToFront();
+                panelForFigures.Controls.Add(obj);
+
+                type = asm.GetType(FigureTypeName);
+                Figure trapezoid = Activator.CreateInstance(type) as Figure;
+                myPaint.AllFiguresDrawner.Add(trapezoid);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Can't downlod plugin");
+            }
         }
 
         private void buttonRectangle_MouseDown(object sender, MouseEventArgs e)
         {
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<AllFigures.Rectangle>();
+            myPaint.SetFigureForDraw(typeof(AllFigures.Rectangle));
         }
 
         private void buttonPolygon_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<Polygone>();
+            myPaint.SetFigureForDraw(typeof(AllFigures.Polygone));
         }
 
         private void buttonEllipse_MouseClick(object sender, MouseEventArgs e)
         {
 
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<Ellipse>();
+            myPaint.SetFigureForDraw(typeof(AllFigures.Ellipse));
         }
 
         private void buttonTriangle_MouseClick(object sender, MouseEventArgs e)
         {
 
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<Triangle>();
+            myPaint.SetFigureForDraw(typeof(AllFigures.Triangle));
         }
 
         private void buttonPolyline_MouseClick(object sender, MouseEventArgs e)
         {
-
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<Polyline>();
+            myPaint.SetFigureForDraw(typeof(AllFigures.Polyline));
         }
 
         private void buttonLine_MouseClick(object sender, MouseEventArgs e)
         {
             myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
-            myPaint.SetFigureForDraw<Line>();
+            myPaint.SetFigureForDraw(typeof(AllFigures.Line));
         }
 
         private void buttonTrapeziod_MouseClick(object sender, MouseEventArgs e)
         {
-            try
+            /*try
             {
                 Assembly asm = Assembly.LoadFrom(@"Plugin.dll");
                 Type t = asm.GetType("Plugin.Trapezoid", true, true);
@@ -78,13 +99,13 @@ namespace GIUAndForms
                 {
                     myPaint.CurrentFigureDrawner.BreakDraw(Graphics.FromImage(myPaint.MainCanvas), new Point(e.X, e.Y));
                     myPaint.AllFiguresDrawner.Add(obj);
-                    myPaint.SetFigureForDraw<Trapezoid>();
+                    myPaint.SetFigureForDraw(t);
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Can't downlod plugin");
-            }
+            }*/
         }
 
         private void DrawPanel_MouseDown(object sender, MouseEventArgs e)
@@ -250,12 +271,22 @@ namespace GIUAndForms
                         myPaint.AllFiguresDrawner[i].MyPen.Width = trackBarLineWidth.Value;
                     }
                 }
+
                 DrawPanel.Image = myPaint.MainCanvas;
-
-
             }
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void downloadPlaginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                DownloadPlugin(openFileDialog1.FileName, @"Plugin.CustomButton", @"Plugin.Trapezoid", myPaint);
+            }
+        }
     }
 }

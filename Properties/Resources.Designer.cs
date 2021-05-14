@@ -61,22 +61,20 @@ namespace GIUAndForms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to C:\Users\lehan\BSUIR\4 sem\ООТПиСП\Paint\AlexPaint\imag.
         /// </summary>
-        internal static System.Drawing.Bitmap free_icon_trapeze_2628226 {
+        internal static string String {
             get {
-                object obj = ResourceManager.GetObject("free-icon-trapeze-2628226", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to C:\Users\lehan\BSUIR\4 sem\ООТПиСП\Paint\AlexPaint\imag\trapeze.png.
         /// </summary>
-        internal static System.Drawing.Bitmap free_icon_trapeze_26282261 {
+        internal static string trapeze_png {
             get {
-                object obj = ResourceManager.GetObject("free-icon-trapeze-26282261", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("trapeze.png", resourceCulture);
             }
         }
     }

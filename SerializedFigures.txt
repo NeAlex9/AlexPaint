@@ -1,53 +1,53 @@
 [
   {
-    "FigureType": "AllFigures.Line",
+    "FigureType": "AllFigures.Rectangle",
     "Points": [
       {
         "IsEmpty": false,
-        "X": 214,
-        "Y": 121
+        "X": 136,
+        "Y": 69
       },
       {
         "IsEmpty": false,
-        "X": 416,
-        "Y": 301
+        "X": 344,
+        "Y": 242
       }
     ],
-    "IntColor": -16777216,
-    "Width": 1
+    "IntColor": -16711936,
+    "Width": 6
   },
   {
-    "FigureType": "AllFigures.Line",
+    "FigureType": "AllFigures.Triangle",
     "Points": [
       {
         "IsEmpty": false,
-        "X": 337,
-        "Y": 91
+        "X": 461,
+        "Y": 116
       },
       {
         "IsEmpty": false,
-        "X": 295,
-        "Y": 331
+        "X": 654,
+        "Y": 293
       }
     ],
-    "IntColor": -16777216,
-    "Width": 6
+    "IntColor": -65281,
+    "Width": 1
   },
   {
     "FigureType": "Plugin.Trapezoid",
     "Points": [
       {
         "IsEmpty": false,
-        "X": 427,
-        "Y": 95
+        "X": 140,
+        "Y": 343
       },
       {
         "IsEmpty": false,
-        "X": 564,
-        "Y": 227
+        "X": 271,
+        "Y": 466
       }
     ],
-    "IntColor": -16776961,
-    "Width": 6
+    "IntColor": -65536,
+    "Width": 1
   }
 ]

@@ -46,7 +46,6 @@
             this.labelWidth = new System.Windows.Forms.Label();
             this.trackBarLineWidth = new System.Windows.Forms.TrackBar();
             this.panelForFigures = new System.Windows.Forms.Panel();
-            this.buttonTrapeziod = new System.Windows.Forms.Button();
             this.buttonPolyline = new System.Windows.Forms.Button();
             this.buttonPolygon = new System.Windows.Forms.Button();
             this.buttonEllipse = new System.Windows.Forms.Button();
@@ -57,7 +56,7 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadPlaginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipNumDeg = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipCurColor = new System.Windows.Forms.ToolTip(this.components);
@@ -88,6 +87,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1076, 98);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // buttonRedo
             // 
@@ -267,7 +267,6 @@
             // panelForFigures
             // 
             this.panelForFigures.BackColor = System.Drawing.Color.White;
-            this.panelForFigures.Controls.Add(this.buttonTrapeziod);
             this.panelForFigures.Controls.Add(this.buttonPolyline);
             this.panelForFigures.Controls.Add(this.buttonPolygon);
             this.panelForFigures.Controls.Add(this.buttonEllipse);
@@ -279,20 +278,6 @@
             this.panelForFigures.Padding = new System.Windows.Forms.Padding(9);
             this.panelForFigures.Size = new System.Drawing.Size(160, 75);
             this.panelForFigures.TabIndex = 0;
-            // 
-            // buttonTrapeziod
-            // 
-            this.buttonTrapeziod.AllowDrop = true;
-            this.buttonTrapeziod.BackColor = System.Drawing.Color.White;
-            this.buttonTrapeziod.BackgroundImage = global::GIUAndForms.Properties.Resources.free_icon_trapeze_26282261;
-            this.buttonTrapeziod.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonTrapeziod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTrapeziod.Location = new System.Drawing.Point(119, 3);
-            this.buttonTrapeziod.Name = "buttonTrapeziod";
-            this.buttonTrapeziod.Size = new System.Drawing.Size(36, 33);
-            this.buttonTrapeziod.TabIndex = 11;
-            this.buttonTrapeziod.UseVisualStyleBackColor = false;
-            this.buttonTrapeziod.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonTrapeziod_MouseClick);
             // 
             // buttonPolyline
             // 
@@ -329,7 +314,7 @@
             this.buttonEllipse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEllipse.BackgroundImage")));
             this.buttonEllipse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEllipse.Location = new System.Drawing.Point(77, 3);
+            this.buttonEllipse.Location = new System.Drawing.Point(80, 3);
             this.buttonEllipse.Name = "buttonEllipse";
             this.buttonEllipse.Size = new System.Drawing.Size(36, 33);
             this.buttonEllipse.TabIndex = 7;
@@ -396,7 +381,7 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenToolStripMenuItem,
             this.SaveToolStripMenuItem,
-            this.ExitToolStripMenuItem});
+            this.downloadPlaginToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -404,21 +389,22 @@
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.OpenToolStripMenuItem.Text = "Открыть";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.SaveToolStripMenuItem.Text = "Сохранить";
             // 
-            // ExitToolStripMenuItem
+            // downloadPlaginToolStripMenuItem
             // 
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
-            this.ExitToolStripMenuItem.Text = "Выход";
+            this.downloadPlaginToolStripMenuItem.Name = "downloadPlaginToolStripMenuItem";
+            this.downloadPlaginToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.downloadPlaginToolStripMenuItem.Text = "Загрузить плагин";
+            this.downloadPlaginToolStripMenuItem.Click += new System.EventHandler(this.downloadPlaginToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -497,8 +483,6 @@
 
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
 
-        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
-
         private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
 
@@ -539,8 +523,8 @@
         #endregion
 
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.Button buttonTrapeziod;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem downloadPlaginToolStripMenuItem;
     }
 }

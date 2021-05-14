@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,12 +47,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AlexPaint\AlexPaint.csproj">
+      <Project>{1f0ee888-0509-43ee-968e-88b260a5fe19}</Project>
+      <Name>AlexPaint</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AllFigures\AllFigures.csproj">
       <Project>{34096085-0C61-41AA-9167-2CD71406CBC3}</Project>
       <Name>AllFigures</Name>
     </ProjectReference>
     <ProjectReference Include="..\BaseFigure\BaseFigure.csproj">
-      <Project>{087df21e-5501-44de-8fa3-920edf3aa60f}</Project>
+      <Project>{087DF21E-5501-44DE-8FA3-920EDF3AA60F}</Project>
       <Name>BaseFigure</Name>
     </ProjectReference>
   </ItemGroup>
