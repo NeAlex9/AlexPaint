@@ -29,7 +29,7 @@ namespace GIUAndForms
 
         }
 
-        public void DownloadPlugin(string libName, string buttonTypeName, string FigureTypeName, AlexPaint.Paint paint)
+        public void DownloadPlugin(string libName, AlexPaint.Paint paint)
         {
             Type GetType(Type[] types, Type soughtType)
             {
@@ -305,7 +305,7 @@ namespace GIUAndForms
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                DownloadPlugin(openFileDialog1.FileName, @"Plugin.CustomButton", @"Plugin.Trapezoid", myPaint);
+                DownloadPlugin(openFileDialog1.FileName, myPaint);
             }
         }
     }
