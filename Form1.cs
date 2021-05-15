@@ -31,18 +31,38 @@ namespace GIUAndForms
 
         public void DownloadPlugin(string libName, string buttonTypeName, string FigureTypeName, AlexPaint.Paint paint)
         {
+            Type GetType(Type[] types, Type soughtType)
+            {
+                for (int i = 0; i < types.Length; i++)
+                {
+                    if (soughtType.IsAssignableFrom(types[i]))
+                    {
+                        return types[i];
+                    }
+                }
+
+                return null;
+            }
+
             try
             {
                 Assembly asm = Assembly.LoadFrom(libName);
-                object[] parameters = new object[] { paint, new Size(27, 27), new Point(89, 2), @"trapeze.png" };
-                Type type = asm.GetType(buttonTypeName);
-                Button obj = Activator.CreateInstance(type, parameters) as Button;
-                obj.BringToFront();
-                panelForFigures.Controls.Add(obj);
+                Type[] types = asm.GetTypes();
+                Type type = GetType(types, typeof(Button));
+                if (!(type is null))
+                {
+                    object[] parameters = new object[] { paint, new Size(27, 27), new Point(89, 2) };
+                    Button obj = Activator.CreateInstance(type, parameters) as Button;
+                    obj.BringToFront();
+                    panelForFigures.Controls.Add(obj);
+                }
 
-                type = asm.GetType(FigureTypeName);
-                Figure trapezoid = Activator.CreateInstance(type) as Figure;
-                myPaint.AllFiguresDrawner.Add(trapezoid);
+                type = GetType(types, typeof(Figure));
+                if (!(type is null))
+                {
+                    Figure trapezoid = Activator.CreateInstance(type) as Figure;
+                    myPaint.AllFiguresDrawner.Add(trapezoid);
+                }
             }
             catch (Exception)
             {

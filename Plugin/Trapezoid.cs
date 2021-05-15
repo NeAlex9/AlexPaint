@@ -45,14 +45,14 @@ namespace Plugin
     {
         private AlexPaint.Paint myPaint;
 
-        public CustomButton(AlexPaint.Paint myPaint, Size buttonSize, Point locationPoint, string imagePath)
+        public CustomButton(AlexPaint.Paint myPaint, Size buttonSize, Point locationPoint)
         {
             this.myPaint = myPaint;
             Location = locationPoint;
             Size = buttonSize;
             FlatStyle = FlatStyle.Flat;
             BackgroundImageLayout = ImageLayout.Stretch;
-            Image im = Image.FromFile(imagePath);
+            Image im = Properties.Resource1.trapeze;
             BackgroundImage = im;
             MouseClick += new MouseEventHandler(buttonTrapezoid_MouseClick);
 
