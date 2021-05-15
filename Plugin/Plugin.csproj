@@ -77,5 +77,8 @@
   <ItemGroup>
     <None Include="bin\Debug\trapeze.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="trapeze.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
