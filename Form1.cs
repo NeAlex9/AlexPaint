@@ -1,7 +1,6 @@
 ﻿using AlexPaint;
 using AllFigures;
 using BaseFigure;
-using Plugin;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

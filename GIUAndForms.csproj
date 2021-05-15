@@ -123,10 +123,6 @@
       <Project>{087df21e-5501-44de-8fa3-920edf3aa60f}</Project>
       <Name>BaseFigure</Name>
     </ProjectReference>
-    <ProjectReference Include="Plugin\Plugin.csproj">
-      <Project>{6EF4A74E-927C-4ADA-88DB-5A17DF75B430}</Project>
-      <Name>Plugin</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="imag\free-icon-trapeze-2628226.png" />
